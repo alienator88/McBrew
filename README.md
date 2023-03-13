@@ -1,6 +1,11 @@
 # McBrew
 
-A fast GUI for Homebrew written in SwiftUI
+A fast GUI for Homebrew written in SwiftUI. This is my personal spin on the awesome version from buresdv.
+Adding in features and redesigning the look to fit more of my needs. Also using this as a learning tool for Swift as I'm new to it.
+
+## Thanks
+
+Much appreciation for the original from https://github.com/buresdv
 
 ## Getting McBrew
 
