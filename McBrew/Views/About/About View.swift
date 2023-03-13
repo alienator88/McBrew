@@ -2,7 +2,7 @@
 //  About View.swift
 //  McBrew
 //
-//  Created by David Bureš on 07.07.2022.
+//  Created by alienator88 on 07.07.2022.
 //
 
 import DavidFoundation
@@ -11,11 +11,12 @@ import SwiftUI
 struct AboutView: View
 {
     @State private var usedPackages: [UsedPackage] = [
-        UsedPackage(name: "DavidFoundation", whyIsItUsed: "My own package that provides some basic convenience features", packageURL: URL(string: "https://github.com/buresdv/DavidFoundation")!),
-        UsedPackage(name: "SwiftyJSON", whyIsItUsed: "I hate default JSON parsing in Swift. Why reinvent the wheel when you can just use a library to make it bearable?", packageURL: URL(string: "https://github.com/SwiftyJSON/SwiftyJSON")!)
+        UsedPackage(name: "DavidFoundation", whyIsItUsed: "David's package that provides some basic convenience features", packageURL: URL(string: "https://github.com/buresdv/DavidFoundation")!),
+        UsedPackage(name: "SwiftyJSON", whyIsItUsed: "We hate default JSON parsing in Swift. Why reinvent the wheel when you can just use a library to make it bearable?", packageURL: URL(string: "https://github.com/SwiftyJSON/SwiftyJSON")!)
     ]
 
     @State private var specialThanks: [AcknowledgedContributor] = [
+        AcknowledgedContributor(name: "David Bureš", reasonForAcknowledgement: "For creating this amazing app originally!", profileService: "GitHub", profileURL: URL(string: "https://github.com/buresdv")!),
         AcknowledgedContributor(name: "Seb Jachec", reasonForAcknowledgement: "Implemented a function for getting real-time outputs of commands, making more than half of all features in McBrew much faster", profileService: "GitHub", profileURL: URL(string: "https://github.com/sebj")!),
     ]
     @State private var acknowledgedContributors: [AcknowledgedContributor] = [
@@ -46,7 +47,7 @@ struct AboutView: View
                         .font(.caption)
                 }
 
-                Text("© 2022 David Bureš and contributors.")
+                Text("© 2023 alienator88 and contributors.")
                     .font(.subheadline)
                     .foregroundColor(.secondary)
 
@@ -142,20 +143,20 @@ struct AboutView: View
 
                 HStack
                 {
-                    Button
-                    {
-                        NSWorkspace.shared.open(URL(string: "https://github.com/buresdv/McBrew")!)
-                    } label: {
-                        Label("Contribute", systemImage: "curlybraces")
-                    }
+//                    Button
+//                    {
+//                        NSWorkspace.shared.open(URL(string: "https://github.com/alienator88")!)
+//                    } label: {
+//                        Label("Contribute", systemImage: "curlybraces")
+//                    }
 
                     Spacer()
 
                     Button
                     {
-                        NSWorkspace.shared.open(URL(string: "https://elk.zone/mstdn.social/@davidbures")!)
+                        NSWorkspace.shared.open(URL(string: "https://github.com/alienator88")!)
                     } label: {
-                        Label("Contact Me", systemImage: "paperplane")
+                        Label("GitHub", systemImage: "paperplane")
                     }
                 }
             }

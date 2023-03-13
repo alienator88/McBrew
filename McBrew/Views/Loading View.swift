@@ -2,7 +2,7 @@
 //  Loading View.swift
 //  McBrew
 //
-//  Created by David Bureš on 09.07.2022.
+//  Created by alienator88 on 09.07.2022.
 //
 
 import SwiftUI

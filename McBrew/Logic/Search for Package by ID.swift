@@ -2,7 +2,7 @@
 //  Search for Package by ID.swift
 //  McBrew
 //
-//  Created by David Bureš on 04.07.2022.
+//  Created by alienator88 on 04.07.2022.
 //
 
 import Foundation

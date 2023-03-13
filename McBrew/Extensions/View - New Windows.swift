@@ -2,7 +2,7 @@
 //  View - New Windows.swift
 //  McBrew
 //
-//  Created by David Bureš on 22.07.2022.
+//  Created by alienator88 on 22.07.2022.
 //
 
 import SwiftUI

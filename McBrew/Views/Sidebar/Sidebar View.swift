@@ -2,7 +2,7 @@
 //  Sidebar View.swift
 //  McBrew
 //
-//  Created by David Bureš on 14.02.2023.
+//  Created by alienator88 on 14.02.2023.
 //
 
 import SwiftUI

@@ -2,7 +2,7 @@
 //  Get Caveats.swift
 //  McBrew
 //
-//  Created by David Bureš on 27.02.2023.
+//  Created by alienator88 on 27.02.2023.
 //
 
 import Foundation

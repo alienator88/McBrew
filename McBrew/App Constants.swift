@@ -2,7 +2,7 @@
 //  App Constants.swift
 //  McBrew
 //
-//  Created by David Bureš on 03.07.2022.
+//  Created by alienator88 on 03.07.2022.
 //
 
 import Foundation
@@ -43,7 +43,7 @@ struct AppConstants {
         }
     }()
     
-    static let brewCachePath: URL = URL(string: NSSearchPathForDirectoriesInDomains(.libraryDirectory, .userDomainMask, true).first!)!.appendingPathComponent("Caches", conformingTo: .directory).appendingPathComponent("Homebrew", conformingTo: .directory) // /Users/david/Library/Caches/Homebrew
+    static let brewCachePath: URL = URL(string: NSSearchPathForDirectoriesInDomains(.libraryDirectory, .userDomainMask, true).first!)!.appendingPathComponent("Caches", conformingTo: .directory).appendingPathComponent("Homebrew", conformingTo: .directory) // /Users/alin/Library/Caches/Homebrew
     
     /// These two have the symlinks to the actual downloads
     static let brewCachedFormulaeDownloadsPath: URL = brewCachePath

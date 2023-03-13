@@ -2,7 +2,7 @@
 //  Complex with Icon.swift
 //  McBrew
 //
-//  Created by David Bureš on 13.02.2023.
+//  Created by alienator88 on 13.02.2023.
 //
 
 import SwiftUI

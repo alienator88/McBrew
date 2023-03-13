@@ -2,7 +2,7 @@
 //  Terminal Output.swift
 //  McBrew
 //
-//  Created by David Bureš on 12.02.2023.
+//  Created by alienator88 on 12.02.2023.
 //
 
 import Foundation

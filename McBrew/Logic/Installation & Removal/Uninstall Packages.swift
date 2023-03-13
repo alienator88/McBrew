@@ -2,7 +2,7 @@
 //  Uninstall Packages.swift
 //  McBrew
 //
-//  Created by David Bureš on 05.02.2023.
+//  Created by alienator88 on 05.02.2023.
 //
 
 import Foundation

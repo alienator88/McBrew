@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  McBrew
 //
-//  Created by David Bureš on 07.07.2022.
+//  Created by alienator88 on 07.07.2022.
 //
 
 import Foundation

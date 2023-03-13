@@ -2,7 +2,7 @@
 //  Return Formatted Versions.swift
 //  McBrew
 //
-//  Created by David Bureš on 03.07.2022.
+//  Created by alienator88 on 03.07.2022.
 //
 
 import Foundation

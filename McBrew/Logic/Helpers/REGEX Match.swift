@@ -2,7 +2,7 @@
 //  REGEX Match.swift
 //  McBrew
 //
-//  Created by David Bureš on 19.02.2023.
+//  Created by alienator88 on 19.02.2023.
 //
 
 import Foundation

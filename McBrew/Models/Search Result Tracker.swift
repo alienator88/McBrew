@@ -2,7 +2,7 @@
 //  Search Result Tracker.swift
 //  McBrew
 //
-//  Created by David Bureš on 22.02.2023.
+//  Created by alienator88 on 22.02.2023.
 //
 
 import Foundation

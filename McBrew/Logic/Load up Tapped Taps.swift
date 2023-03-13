@@ -2,7 +2,7 @@
 //  Load up Tapped Taps.swift
 //  McBrew
 //
-//  Created by David Bureš on 10.02.2023.
+//  Created by alienator88 on 10.02.2023.
 //
 
 import Foundation

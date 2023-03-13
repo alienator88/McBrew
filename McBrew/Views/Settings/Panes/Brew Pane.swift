@@ -2,7 +2,7 @@
 //  Brew Pane.swift
 //  McBrew
 //
-//  Created by David Bureš on 06.03.2023.
+//  Created by alienator88 on 06.03.2023.
 //
 
 import Foundation
