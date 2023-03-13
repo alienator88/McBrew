@@ -1,21 +1,10 @@
-# Cork
+# McBrew
 
 A fast GUI for Homebrew written in SwiftUI
 
-[![Mastodon Link](https://img.shields.io/mastodon/follow/108939255808776594?domain=https%3A%2F%2Fmstdn.social&label=Follow%20me%20for%20updates&style=flat)](https://elk.zone/mstdn.social/@davidbures)
-[![Mastodon Link](https://img.shields.io/discord/1083475351260377119?label=Tak%20to%20me%20on%20Discord&style=flat)](https://discord.gg/kUHg8uGHpG)
+## Getting McBrew
 
-## Special Thanks
-
-I'd like to personally thank [Seb Jachec](https://github.com/sebj) for implementing a system for getting real-time outputs of Brew commands. 
-
-Without his contribution, many of the processes that depend on real-time outputs, such as installation, uninstallation and updating of packages, would be impossible.
-
-## Getting Cork
-
-Pre-compiled, always up-to-date versions are available from my Homebrew tap, which you get access to by donating 5€/month. You can donate through [Ko-Fi](https://ko-fi.com/buresdv) or [GitHub Sponsors](https://github.com/sponsors/buresdv).
-
-However, as Cork is open source, you can always compile it from source for free. See below for instructions.
+Pre-compiled, always up-to-date versions are available from my releases page.
 
 ## Screenshots
 ### Main Window
@@ -36,9 +25,9 @@ However, as Cork is open source, you can always compile it from source for free.
 ![Brew Maintenance](https://i.imgur.com/LGkDErZ.jpg)
 ![Brew Maintenance Results](https://i.imgur.com/GbTerQX.jpg)
 
-## Compiling Cork
+## Compiling McBrew
 
-Compiling Cork is simple, as it does not have many dependencies.
+Compiling McBrew is simple, as it does not have many dependencies.
 
 Prerequisites:
 
@@ -59,18 +48,18 @@ Instructions:
 5. On the bottom left, click the **+** icon and select `Apple Development`
 6. When a new item appears in the list called `Apple Development Certificates`, you can press `Done` to close the account manager
 
-**Compiling Cork**
+**Compiling McBrew**
 
-1. Clone this repo using `git clone https://github.com/buresdv/Cork.git && cd Cork && open .`
-2. Double-click `Cork.xcodeproj`. Xcode should open the project
+1. Clone this repo using `git clone https://github.com/alienator88/McBrew.git && cd McBrew && open .`
+2. Double-click `McBrew.xcodeproj`. Xcode should open the project
 3. Wait until all the dependencies are resolved. It should take a couple minutes at most
 4. In the Menu Bar, click `Product → Archive` and wait for the building to finish
-5. A new window will open. From the list of Cork rows, select the topmost one, and click `Distribute App`
+5. A new window will open. From the list of McBrew rows, select the topmost one, and click `Distribute App`
 6. Click `Copy App`
-7. Open the resulting folder. You'll see an app called Cork. Drag Cork to your `/Applications/` folder, and you're done!
+7. Open the resulting folder. You'll see an app called McBrew. Drag McBrew to your `/Applications/` folder, and you're done!
 
 ## License
 
-Cork is licensed under [Commons Clause](https://commonsclause.com).
+McBrew is licensed under [Commons Clause](https://commonsclause.com).
 
-This means that Cork open-source and you can do whatever you want with Cork's source, like modifying it, contributing to it etc., but you can't sell Cork or modified versions of it.
+This means that McBrew open-source and you can do whatever you want with McBrew's source, like modifying it, contributing to it etc., but you can't sell McBrew or modified versions of it.
