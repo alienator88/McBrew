@@ -38,15 +38,15 @@ struct ContentView: View
                     .frame(minWidth: 600, minHeight: 500)
             }
             .navigationTitle("McBrew")
-            .navigationSubtitle("\(brewData.installedFormulae.count) formulae, \(brewData.installedCasks.count) \(multipleCask) installed")
-//            .navigationSubtitle("\(brewData.installedFormulae.count + brewData.installedCasks.count) packages installed")
+            .navigationSubtitle("\(brewData.installedFormulae.count) formulae, \(brewData.installedCasks.count) \(multipleCask), \(availableTaps.addedTaps.count) taps")
+///            .navigationSubtitle("\(brewData.installedFormulae.count + brewData.installedCasks.count) packages installed")
             .toolbar
             {
-                ToolbarItem(placement: .navigation) {
-                                Button(action: toggleSidebar, label: {
-                                    Image(systemName: "sidebar.leading")
-                                })
-                }
+//                ToolbarItem(placement: .navigation) {
+//                                Button(action: toggleSidebar, label: {
+//                                    Image(systemName: "sidebar.leading")
+//                                })
+//                }
                 ToolbarItemGroup(placement: .primaryAction)
                 {
                     Button
@@ -118,7 +118,7 @@ struct ContentView: View
                         {
                             Text("Maintenance")
                         } icon: {
-                            Image(systemName: "trash")
+                            Image(systemName: "gear")
                         }
                     }
                     .help("Maintenance")

@@ -23,6 +23,8 @@ struct MaintenanceView: View
 
     @EnvironmentObject var brewData: BrewDataStorage
     @EnvironmentObject var appState: AppState
+    @EnvironmentObject var updateProgressTracker: UpdateProgressTracker
+
 
     @State var maintenanceSteps: MaintenanceSteps = .ready
 
@@ -171,24 +173,30 @@ struct MaintenanceView: View
                 .frame(width: 200)
 
             case .finished:
-                ComplexWithIcon(systemName: "checkmark.seal")
+                ComplexWithIcon(systemName: "checkmark.shield.fill")
                 {
                     VStack(alignment: .center)
                     {
                         VStack(alignment: .leading, spacing: 5)
                         {
-                            Text("Maintenance finished")
+                            Text("Maintenance - Done")
                                 .font(.headline)
 
                             if shouldUninstallOrphans
                             {
                                 if numberOfOrphansRemoved == 0
                                 {
-                                    Text("No orphaned packages found")
+                                    HStack{
+                                        Text("No orphaned packages found")
+                                        Image(systemName: "checkmark")
+                                    }
                                 }
                                 else
                                 {
-                                    Text("\(numberOfOrphansRemoved) orphaned packages removed")
+                                    HStack{
+                                        Text("\(numberOfOrphansRemoved) orphaned packages removed")
+                                        Image(systemName: "checkmark")
+                                    }
                                 }
                             }
 
@@ -196,7 +204,10 @@ struct MaintenanceView: View
                             {
                                 VStack(alignment: .leading)
                                 {
-                                    Text("Package cache purged")
+                                    HStack{
+                                        Text("Package cache purged")
+                                        Image(systemName: "checkmark")
+                                    }
 
                                     if cachePurgingSkippedPackagesDueToMostRecentVersionsNotBeingInstalled
                                     {
@@ -210,10 +221,14 @@ struct MaintenanceView: View
                             if shouldDeleteDownloads
                             {
                                 VStack(alignment: .leading) {
-                                    Text("Cached downloads deleted")
+                                    HStack{
+                                        Text("Cached downloads deleted")
+                                        Image(systemName: "checkmark")
+                                    }
                                     Text("You reclaimed \(convertDirectorySizeToPresentableFormat(size: reclaimedSpaceAfterCachePurge))")
                                         .font(.caption)
                                         .foregroundColor(Color(nsColor: NSColor.systemGray))
+                                    
                                 }
                             }
 
@@ -221,15 +236,22 @@ struct MaintenanceView: View
                             {
                                 if brewHealthCheckFoundNoProblems
                                 {
-                                    Text("No problems with Homebrew found")
+                                    HStack{
+                                        Text("No problems with Homebrew")
+                                        Image(systemName: "checkmark")
+                                    }
                                 }
                                 else
                                 {
-                                    Text("Found some problems with Homebrew")
-                                        .onAppear
-                                        {
-                                            maintenanceFoundNoProblems = false
-                                        }
+                                    HStack{
+                                        Text("Found some problems with Homebrew")
+                                            .onAppear
+                                            {
+                                                maintenanceFoundNoProblems = false
+                                            }
+                                        Image(systemName: "exclamationmark.octagon")
+                                    }
+                                    
                                 }
                             }
                         }
@@ -249,6 +271,7 @@ struct MaintenanceView: View
                                 Text("Close")
                             }
                             .keyboardShortcut(.defaultAction)
+                            .padding(.top)
                         }
                     }
                     .fixedSize()

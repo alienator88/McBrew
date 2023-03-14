@@ -13,6 +13,7 @@ enum UpdateStages: String
     case notDoingAnything = ""
     case updating = "Updating packages"
     case upgrading = "Upgrading homebrew"
+    case brewfile = "installing packages from Brewfile"
 }
 
 class UpdateProgressTracker: ObservableObject

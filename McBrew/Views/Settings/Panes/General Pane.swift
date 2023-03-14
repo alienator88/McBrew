@@ -78,7 +78,7 @@ struct GeneralPane: View
                         Text("Show package descriptions")
                     }
                 } label: {
-                    Text("Search results:")
+                    Text("New package search:")
                 }
 
 

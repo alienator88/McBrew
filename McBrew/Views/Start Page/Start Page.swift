@@ -33,7 +33,7 @@ struct StartPage: View
             {
                 ProgressView
                 {
-                    Text("Checking for Package Updates...")
+                    Text("Loading")
                 }
             }
             else
@@ -87,6 +87,9 @@ struct StartPage: View
 
                         if !appState.isLoadingFormulae && !appState.isLoadingCasks
                         {
+                            Text("Configuration")
+                                .font(.title2)
+                            
                             GroupBox
                             {
                                 VStack(alignment: .leading)
@@ -145,7 +148,7 @@ struct StartPage: View
                                 {
                                     GroupBoxHeadlineGroupPaths(
                                         image: "folder",
-                                        title: "Paths your homebrew installation is using",
+                                        title: "Homebrew installation paths",
                                         a1: "Brew: ",
                                         a2: "\(AppConstants.brewExecutablePath)",
                                         b1: "Cellar: ",
@@ -180,12 +183,51 @@ struct StartPage: View
                                             Button {
                                                 appState.isShowingFastCacheDeletionMaintenanceView = true
                                             } label: {
-                                                Text("Delete Cached Downloads…")
+                                                Image(systemName: "trash")
+                                                    .resizable()
+                                                    .scaledToFit()
+                                                    .frame(width: 18.0, height: 18.0)
+                                                
+//                                                Text("Empty Download Cache")
                                             }
+                                            .padding(.trailing)
+                                            .controlSize(.large)
                                         }
                                     }
                                 }
                             }
+                            
+                            // Dump Buttons
+                            HStackLayout(){
+                                Button
+                                {
+                                    bundleDump()
+                                } label: {
+                                    Label
+                                    {
+                                        Text("Dump Bundle")
+                                    } icon: {
+                                        Image(systemName: "square.stack.3d.down.right")
+                                    }
+                                }
+                                .help("Dump all packages to a Brewfile")
+                                
+                                Button
+                                {
+                                    bundleFile(updateProgressTracker, appState: appState)
+                                } label: {
+                                    Label
+                                    {
+                                        Text("Install Brewfile")
+                                    } icon: {
+                                        Image(systemName: "plus")
+                                    }
+                                }
+                                .help("Restore package state from Brewfile ")
+                            }
+                            .frame(maxWidth: .infinity, alignment: .trailing)
+                            .padding()
+                            
                         }
                     }
 

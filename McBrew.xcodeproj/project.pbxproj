@@ -103,6 +103,8 @@
 		63D83107299935E900FA802F /* Dismiss Sheet Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D83106299935E900FA802F /* Dismiss Sheet Button.swift */; };
 		63D8310A299982EA00FA802F /* Search Result Row.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D83109299982EA00FA802F /* Search Result Row.swift */; };
 		63D8C957287A1D0800483A52 /* Loading View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D8C956287A1D0800483A52 /* Loading View.swift */; };
+		C7E356C629BFD2AD00F5B2DD /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E356C529BFD2AD00F5B2DD /* Bundle.swift */; };
+		C7E356C829BFF24200F5B2DD /* HomeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E356C729BFF24200F5B2DD /* HomeButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -202,6 +204,8 @@
 		63D83106299935E900FA802F /* Dismiss Sheet Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dismiss Sheet Button.swift"; sourceTree = "<group>"; };
 		63D83109299982EA00FA802F /* Search Result Row.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Search Result Row.swift"; sourceTree = "<group>"; };
 		63D8C956287A1D0800483A52 /* Loading View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Loading View.swift"; sourceTree = "<group>"; };
+		C7E356C529BFD2AD00F5B2DD /* Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
+		C7E356C729BFF24200F5B2DD /* HomeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -339,6 +343,7 @@
 		634065762871AB2A001A2178 /* Logic */ = {
 			isa = PBXGroup;
 			children = (
+				C7E356C429BFD28B00F5B2DD /* Bundle */,
 				63006E0329ACC54900243E29 /* JSON */,
 				6382C8FC299D70E300354B19 /* Sorting */,
 				63D51F6F299ABA5100203F3F /* Maintenance */,
@@ -431,6 +436,7 @@
 			isa = PBXGroup;
 			children = (
 				637402D9299BF878001AB7B1 /* Sidebar View.swift */,
+				C7E356C729BFF24200F5B2DD /* HomeButton.swift */,
 			);
 			path = Sidebar;
 			sourceTree = "<group>";
@@ -647,6 +653,14 @@
 			path = Reusables;
 			sourceTree = "<group>";
 		};
+		C7E356C429BFD28B00F5B2DD /* Bundle */ = {
+			isa = PBXGroup;
+			children = (
+				C7E356C529BFD2AD00F5B2DD /* Bundle.swift */,
+			);
+			path = Bundle;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -762,11 +776,13 @@
 				6342118029AA9CBB00E2563B /* Maintenance Pane.swift in Sources */,
 				634065672871AA42001A2178 /* ContentView.swift in Sources */,
 				637402DA299BF878001AB7B1 /* Sidebar View.swift in Sources */,
+				C7E356C829BFF24200F5B2DD /* HomeButton.swift in Sources */,
 				63A8746A2990127D009F9533 /* PillText.swift in Sources */,
 				6382C90C299DA46100354B19 /* Perform Brew Health Check.swift in Sources */,
 				632FD292299596790029FC49 /* HelpButton.swift in Sources */,
 				63D8310A299982EA00FA802F /* Search Result Row.swift in Sources */,
 				63A8746E29904A7F009F9533 /* App State.swift in Sources */,
+				C7E356C629BFD2AD00F5B2DD /* Bundle.swift in Sources */,
 				63A87468298FE811009F9533 /* Package Types.swift in Sources */,
 				63006E1129ACCCB800243E29 /* Get If Package Was Installed as Dependency.swift in Sources */,
 				63199FE029980AB9002F50F0 /* Load up Installed Packages.swift in Sources */,

@@ -21,6 +21,7 @@ struct ComplexWithIcon<Content: View>: View
                 .resizable()
                 .frame(width: 50, height: 50)
                 .foregroundColor(.secondary)
+                .padding()
 
             content
         }

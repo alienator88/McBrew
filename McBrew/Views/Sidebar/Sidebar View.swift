@@ -18,6 +18,7 @@ struct SidebarView: View
     @State private var isShowingSearchField: Bool = false
     @State private var searchText: String = ""
     @State private var isHovering = false
+    
 
     var body: some View
     {
@@ -27,9 +28,9 @@ struct SidebarView: View
                 NavigationLink(destination: StartPage()) {
                     HStack{
                         Image(systemName: isHovering ? "house.fill" : "house")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 26.0, height: 26.0)
+//                            .resizable()
+//                            .scaledToFit()
+//                            .frame(width: 26.0, height: 26.0)
 //                        Text("Home")
                     }
                 }
@@ -43,7 +44,7 @@ struct SidebarView: View
 //            .collapsible(false)
             
             
-            Section("Formulae")
+            Section("Formulae (\(brewData.installedFormulae.count))")
             {
                 if !appState.isLoadingFormulae
                 {
@@ -78,7 +79,7 @@ struct SidebarView: View
             .collapsible(true)
             .font(.system(size: 14))
 
-            Section("Casks")
+            Section("Casks (\(brewData.installedCasks.count))")
             {
                 if !appState.isLoadingCasks
                 {
@@ -116,7 +117,7 @@ struct SidebarView: View
 
             if searchText.isEmpty
             {
-                Section("Taps")
+                Section("Taps (\(availableTaps.addedTaps.count))")
                 {
                     if availableTaps.addedTaps.count != 0
                     {
@@ -157,7 +158,7 @@ struct SidebarView: View
 
             }
         }
-        .listStyle(.sidebar)
+        .listStyle(SidebarListStyle())
         .frame(minWidth: 250)
         .searchable(text: $searchText, placement: .automatic, prompt: Text("Search"))
         .sheet(isPresented: $appState.isShowingMaintenanceSheet)
@@ -167,6 +168,29 @@ struct SidebarView: View
         .sheet(isPresented: $appState.isShowingFastCacheDeletionMaintenanceView)
         {
             MaintenanceView(isShowingSheet: $appState.isShowingFastCacheDeletionMaintenanceView, shouldPurgeCache: false, shouldUninstallOrphans: false, shouldPerformHealthCheck: false, forcedOptions: true)
+        }
+        .toolbar {
+            
+//            ToolbarItem {
+//                Text("McBrew")
+//            }
+            
+            ToolbarItem {
+                            Button(action: toggleSidebar, label: {
+                                Image(systemName: "sidebar.leading")
+                            })
+            }
+            
+            ToolbarItem {
+                Button(action: {
+//                    ContentView()
+                    
+                }, label: {
+                                Image(systemName: "house")
+                            })
+            }
+            
+            
         }
     }
 }

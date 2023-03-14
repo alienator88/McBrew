@@ -53,7 +53,7 @@ struct MaintenanceReadyView: View {
                         }
                         Toggle(isOn: $shouldDeleteDownloads)
                         {
-                            Text("Delete cached downloads")
+                            Text("Empty Download Cache")
                         }
                     }
                 }
