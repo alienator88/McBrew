@@ -36,6 +36,7 @@ struct AboutView: View
             Image(nsImage: NSImage(named: "AppIcon") ?? NSImage())
                 .resizable()
                 .frame(width: 150, height: 150)
+                .transaction { $0.animation = nil }
 
             VStack(alignment: .leading, spacing: 20)
             {
@@ -143,25 +144,27 @@ struct AboutView: View
 
                 HStack
                 {
-//                    Button
-//                    {
-//                        NSWorkspace.shared.open(URL(string: "https://github.com/alienator88")!)
-//                    } label: {
-//                        Label("Contribute", systemImage: "curlybraces")
-//                    }
+                    Button
+                    {
+                        NSWorkspace.shared.open(URL(string: "https://github.com/alienator88/McBrew")!)
+                    } label: {
+                        Label("Repo", systemImage: "curlybraces")
+                    }
+                    .padding(.trailing)
 
-                    Spacer()
 
                     Button
                     {
                         NSWorkspace.shared.open(URL(string: "https://github.com/alienator88")!)
                     } label: {
-                        Label("GitHub", systemImage: "paperplane")
+                        Label("Contact", systemImage: "paperplane")
                     }
                 }
             }
-            .frame(width: 350, alignment: .topLeading)
+            .frame(width: 300, alignment: .topLeading)
+            .transaction { $0.animation = nil }
         }
         .padding()
     }
+    
 }

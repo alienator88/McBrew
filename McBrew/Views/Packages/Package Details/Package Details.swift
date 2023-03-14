@@ -18,29 +18,30 @@ struct PackageDetailView: View
     @AppStorage("caveatDisplayOptions") var caveatDisplayOptions: PackageCaveatDisplay = .full
     
     @State var package: BrewPackage
-
+    
     @EnvironmentObject var brewData: BrewDataStorage
-
+    
     @StateObject var packageInfo: SelectedPackageInfo
-
+    
     @EnvironmentObject var appState: AppState
-
+    
     @State private var description: String = ""
     @State private var homepage: URL = .init(string: "https://google.com")!
     @State private var tap: String = ""
     @State private var installedAsDependency: Bool = false
+    @State private var packageDependents: [String]? = nil
     @State private var dependencies: [BrewPackageDependency]? = nil
     @State private var outdated: Bool = false
     @State private var caveats: String? = nil
     @State private var pinned: Bool = false
-
+    
     @State private var isShowingExpandedCaveats: Bool = false
     @State private var canExpandCaveats: Bool = false
-
+    
     @State private var isShowingCaveatPopover: Bool = false
     @State private var isShowingDependencies: Bool = false
     @State var isShowingPopover: Bool = false
-
+    
     var body: some View
     {
         VStack(alignment: .leading, spacing: 15)
@@ -62,13 +63,30 @@ struct PackageDetailView: View
                             .help("\(package.name) is pinned. It will not be updated.")
                     }
                 }
-
+                
                 VStack(alignment: .leading, spacing: 5)
                 {
-                    HStack(alignment: .center, spacing: 5) {
+                    HStack(alignment: .center, spacing: 5)
+                    {
                         if installedAsDependency
                         {
-                            OutlinedPillText(text: "Dependency", color: .secondary)
+                            if let packageDependents
+                            {
+                                OutlinedPillText(text: "Dependency of \(packageDependents.joined(separator: ", "))", color: .secondary)
+                            }
+                            else
+                            {
+                                OutlinedPill(content: {
+                                    HStack(alignment: .center, spacing: 5)
+                                    {
+                                        ProgressView()
+                                            .scaleEffect(0.3, anchor: .center)
+                                            .frame(width: 5, height: 5)
+                                        
+                                        Text("Loading Dependants...")
+                                    }
+                                }, color: Color(nsColor: NSColor.tertiaryLabelColor))
+                            }
                         }
                         if outdated
                         {
@@ -81,21 +99,23 @@ struct PackageDetailView: View
                                 if caveatDisplayOptions == .mini
                                 {
                                     OutlinedPillText(text: "Has caveats 􀅴", color: .indigo)
-                                        .onTapGesture {
-                                            isShowingCaveatPopover.toggle()
-                                        }
-                                        .popover(isPresented: $isShowingCaveatPopover) {
-                                            Text(.init(caveats.trimmingCharacters(in: .whitespacesAndNewlines).replacingOccurrences(of: "\n\n", with: "\n")))
-                                                .textSelection(.enabled)
-                                                .lineSpacing(5)
-                                                .padding()
-                                                .help("Click to see caveats")
-                                        }
+                                        .onTapGesture
+                                    {
+                                        isShowingCaveatPopover.toggle()
+                                    }
+                                    .popover(isPresented: $isShowingCaveatPopover)
+                                    {
+                                        Text(.init(caveats.trimmingCharacters(in: .whitespacesAndNewlines).replacingOccurrences(of: "\n\n", with: "\n")))
+                                            .textSelection(.enabled)
+                                            .lineSpacing(5)
+                                            .padding()
+                                            .help("Click to see caveats")
+                                    }
                                 }
                             }
                         }
                     }
-
+                    
                     if packageInfo.contents != nil
                     {
                         if !description.isEmpty
@@ -105,7 +125,8 @@ struct PackageDetailView: View
                         }
                         else
                         {
-                            HStack(alignment: .center, spacing: 10) {
+                            HStack(alignment: .center, spacing: 10)
+                            {
                                 Image(systemName: "exclamationmark.triangle.fill")
                                     .resizable()
                                     .frame(width: 15, height: 15)
@@ -117,10 +138,20 @@ struct PackageDetailView: View
                     }
                 }
             }
-
+            
             if packageInfo.contents == nil
             {
-                LoadingView()
+                HStack(alignment: .center)
+                {
+                    VStack(alignment: .center)
+                    {
+                        ProgressView
+                        {
+                            Text("Loading package info...")
+                        }
+                    }
+                }
+                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
             }
             else
             {
@@ -128,7 +159,7 @@ struct PackageDetailView: View
                 {
                     Text("Details")
                         .font(.title2)
-
+                    
                     if let caveats
                     {
                         if !caveats.isEmpty
@@ -137,14 +168,16 @@ struct PackageDetailView: View
                             {
                                 GroupBox
                                 {
-                                    HStack(alignment: .top, spacing: 10) {
+                                    HStack(alignment: .top, spacing: 10)
+                                    {
                                         Image(systemName: "exclamationmark.triangle.fill")
                                             .resizable()
                                             .frame(width: 15, height: 15)
                                             .foregroundColor(.yellow)
-
+                                        
                                         /// Remove the last newline from the text if there is one, and replace all double newlines with a single newline
-                                        VStack(alignment: .leading, spacing: 5) {
+                                        VStack(alignment: .leading, spacing: 5)
+                                        {
                                             let text = Text(
                                                 .init(
                                                     caveats
@@ -152,22 +185,27 @@ struct PackageDetailView: View
                                                         .replacingOccurrences(of: "\n\n", with: "\n")
                                                 )
                                             )
-                                            .lineSpacing(5)
-
+                                                .lineSpacing(5)
+                                            
                                             text
                                                 .textSelection(.enabled)
                                                 .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
                                                 .lineLimit(isShowingExpandedCaveats ? nil : 2)
-                                                .background {
-                                                    ViewThatFits(in: .vertical) {
-                                                        text.hidden()
-                                                        Color.clear.onAppear { canExpandCaveats = true }
-                                                    }
+                                                .background
+                                            {
+                                                ViewThatFits(in: .vertical)
+                                                {
+                                                    text.hidden()
+                                                    Color.clear.onAppear { canExpandCaveats = true }
                                                 }
-
-                                            if canExpandCaveats {
-                                                Button {
-                                                    withAnimation {
+                                            }
+                                            
+                                            if canExpandCaveats
+                                            {
+                                                Button
+                                                {
+                                                    withAnimation
+                                                    {
                                                         isShowingExpandedCaveats.toggle()
                                                     }
                                                 } label: {
@@ -192,9 +230,9 @@ struct PackageDetailView: View
                                 Text("Tap")
                                 Text(tap)
                             }
-
+                            
                             Divider()
-
+                            
                             GridRow(alignment: .top)
                             {
                                 Text("Type")
@@ -207,9 +245,9 @@ struct PackageDetailView: View
                                     Text("Formula")
                                 }
                             }
-
+                            
                             Divider()
-
+                            
                             GridRow(alignment: .top)
                             {
                                 Text("Homepage")
@@ -220,7 +258,7 @@ struct PackageDetailView: View
                             }
                         }
                     }
-
+                    
                     if let dependencies
                     {
                         GroupBox
@@ -229,8 +267,8 @@ struct PackageDetailView: View
                             {
                                 DisclosureGroup("Dependencies", isExpanded: $isShowingDependencies)
                                 {}
-                                .disclosureGroupStyle(NoPadding())
-
+                                    .disclosureGroupStyle(NoPadding())
+                                
                                 if isShowingDependencies
                                 {
                                     DependencyList(dependencies: dependencies)
@@ -238,7 +276,7 @@ struct PackageDetailView: View
                             }
                         }
                     }
-
+                    
                     if let installedOnDate = package.installedOn // Only show the "Installed on" date for packages that are actually installed
                     {
                         GroupBox
@@ -250,19 +288,19 @@ struct PackageDetailView: View
                                     Text("Installed On")
                                     Text(package.convertDateToPresentableFormat(date: installedOnDate))
                                 }
-
+                                
                                 if let packageSize = package.sizeInBytes
                                 {
                                     Divider()
-
+                                    
                                     GridRow(alignment: .top)
                                     {
                                         Text("Size")
-
+                                        
                                         HStack
                                         {
                                             Text(package.convertSizeToPresentableFormat(size: packageSize))
-
+                                            
                                             if package.isCask
                                             {
                                                 HelpButton
@@ -291,9 +329,9 @@ struct PackageDetailView: View
                     }
                 }
             }
-
+            
             Spacer()
-
+            
             if let _ = package.installedOn // Only show the uninstall button for packages that are actually installed
             {
                 if packageInfo.contents != nil
@@ -303,7 +341,8 @@ struct PackageDetailView: View
                         
                         if !package.isCask
                         {
-                            Button {
+                            Button
+                            {
                                 Task
                                 {
                                     pinned.toggle()
@@ -316,11 +355,11 @@ struct PackageDetailView: View
                         }
                         
                         Spacer()
-
+                        
                         HStack(spacing: 15)
                         {
                             UninstallationProgressWheel()
-
+                            
                             Button(role: .destructive)
                             {
                                 Task
@@ -341,7 +380,7 @@ struct PackageDetailView: View
         {
             Task
             {
-
+                
                 if !package.isCask
                 {
                     packageInfo.contents = await shell(AppConstants.brewExecutablePath.absoluteString, ["info", "--json=v2", package.name]).standardOutput
@@ -350,9 +389,9 @@ struct PackageDetailView: View
                 {
                     packageInfo.contents = await shell(AppConstants.brewExecutablePath.absoluteString, ["info", "--json=v2", "--cask", package.name]).standardOutput
                 }
-
+                
                 let parsedJSON: JSON = try parseJSON(from: packageInfo.contents!)
-
+                
                 description = getPackageDescriptionFromJSON(json: parsedJSON, package: package)
                 homepage = getPackageHomepageFromJSON(json: parsedJSON, package: package)
                 tap = getPackageTapFromJSON(json: parsedJSON, package: package)
@@ -360,6 +399,15 @@ struct PackageDetailView: View
                 outdated = getIfPackageIsOutdated(json: parsedJSON, package: package)
                 caveats = getCaveatsFromJSON(json: parsedJSON, package: package)
                 pinned = getPinStatusFromJSON(json: parsedJSON, package: package)
+                
+                if installedAsDependency
+                {
+                    async let packageDependentsRaw: String = await shell(AppConstants.brewExecutablePath.absoluteString, ["uses", "--installed", package.name]).standardOutput
+                    
+                    packageDependents = await packageDependentsRaw.components(separatedBy: "\n").dropLast()
+                    
+                    print("Package dependents: \(String(describing: packageDependents))")
+                }
                 
                 if let packageDependencies = getPackageDependenciesFromJSON(json: parsedJSON, package: package)
                 {

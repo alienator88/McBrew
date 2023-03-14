@@ -21,12 +21,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     {
         if aboutWindowController == nil
         {
-            let styleMask: NSWindow.StyleMask = [.closable, .miniaturizable, .titled]
+            let styleMask: NSWindow.StyleMask = [.closable, .titled, .unifiedTitleAndToolbar]
             let window = NSWindow()
 
             window.styleMask = styleMask
             window.title = "About \(NSApplication.appName!)"
             window.contentView = NSHostingView(rootView: AboutView())
+            window.titleVisibility = .hidden
+            window.titlebarAppearsTransparent = true
 
             aboutWindowController = NSWindowController(window: window)
         }

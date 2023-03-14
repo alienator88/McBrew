@@ -24,7 +24,7 @@ struct SidebarFooter: View {
                 NavigationLink(destination: StartPage()) {
                     HStack{
                         Image(systemName: isHovering ? "house.fill" : "house")
-                        Text("Home")
+                        Text("Dashboard")
                     }
                     .padding(8)
                     .background(isHovering ? Color.gray.opacity(0.4) : Color.gray.opacity(0.2))

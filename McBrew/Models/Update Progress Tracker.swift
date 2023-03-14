@@ -13,11 +13,12 @@ enum UpdateStages: String
     case notDoingAnything = ""
     case updating = "Updating packages"
     case upgrading = "Upgrading homebrew"
-    case brewfile = "installing packages from Brewfile"
+    case brewfile = "Installing packages from Brewfile"
 }
 
 class UpdateProgressTracker: ObservableObject
 {
     @Published var updateProgress: Float = 0
     @Published var updateStage: UpdateStages = .notDoingAnything
+    @Published var showProgressView: Bool = false
 }

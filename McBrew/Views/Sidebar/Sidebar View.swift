@@ -179,18 +179,7 @@ struct SidebarView: View
                             Button(action: toggleSidebar, label: {
                                 Image(systemName: "sidebar.leading")
                             })
-            }
-            
-//            ToolbarItem {
-//                Button(action: {
-////                    ContentView()
-//                    
-//                }, label: {
-//                                Image(systemName: "house")
-//                            })
-//            }
-            
-            
+            }            
         }
     }
 }

@@ -42,14 +42,7 @@ struct ContentView: View
 ///            .navigationSubtitle("\(brewData.installedFormulae.count + brewData.installedCasks.count) packages installed")
             .toolbar
             {
-//                ToolbarItem(placement: .navigation) {
-//                    Button(action: {
-//                        NavigationLink(destination: StartPage()) {
-//                        }
-//                    }, label: {
-//                                    Image(systemName: "sidebar.leading")
-//                                })
-//                }
+
                 ToolbarItemGroup(placement: .primaryAction)
                 {
                     Button
@@ -121,7 +114,7 @@ struct ContentView: View
                         {
                             Text("Maintenance")
                         } icon: {
-                            Image(systemName: "gear")
+                            Image(systemName: "arrow.3.trianglepath")
                         }
                     }
                     .help("Maintenance")

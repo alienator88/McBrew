@@ -87,7 +87,7 @@ struct StartPage: View
 
                         if !appState.isLoadingFormulae && !appState.isLoadingCasks
                         {
-                            Text("Configuration")
+                            Text("Dashboard")
                                 .font(.title2)
                             
                             GroupBox

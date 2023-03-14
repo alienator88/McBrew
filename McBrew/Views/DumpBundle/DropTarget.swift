@@ -15,13 +15,15 @@ struct DropTarget: View {
     let types: [UTType]
 
     var body: some View {
+        
         ZStack {
             RoundedRectangle(cornerRadius: 8)
-                .fill(Color.gray.opacity(0.1))
+                .fill(Color("drop").opacity(0.1))
             RoundedRectangle(cornerRadius: 8)
-                .strokeBorder(Color.black.opacity(0.4), style: StrokeStyle(lineWidth: 4, dash: [8, 4], dashPhase: 0))
+                .strokeBorder(Color("drop").opacity(0.4), style: StrokeStyle(lineWidth: 4, dash: [8, 4], dashPhase: 0))
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
         .onDrop(of: types, delegate: delegate)
+        
     }
 }
