@@ -103,8 +103,11 @@
 		63D83107299935E900FA802F /* Dismiss Sheet Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D83106299935E900FA802F /* Dismiss Sheet Button.swift */; };
 		63D8310A299982EA00FA802F /* Search Result Row.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D83109299982EA00FA802F /* Search Result Row.swift */; };
 		63D8C957287A1D0800483A52 /* Loading View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D8C956287A1D0800483A52 /* Loading View.swift */; };
+		C7240DA429C00BA40059B637 /* SidebarFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7240DA329C00BA40059B637 /* SidebarFooter.swift */; };
+		C7AFAF0229C0253700F8AAE2 /* DropTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7AFAF0129C0253700F8AAE2 /* DropTarget.swift */; };
+		C7AFAF0429C0255C00F8AAE2 /* Dump.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7AFAF0329C0255C00F8AAE2 /* Dump.swift */; };
+		C7AFAF0629C0298800F8AAE2 /* DropFile Pane.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7AFAF0529C0298800F8AAE2 /* DropFile Pane.swift */; };
 		C7E356C629BFD2AD00F5B2DD /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E356C529BFD2AD00F5B2DD /* Bundle.swift */; };
-		C7E356C829BFF24200F5B2DD /* HomeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E356C729BFF24200F5B2DD /* HomeButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -204,8 +207,11 @@
 		63D83106299935E900FA802F /* Dismiss Sheet Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dismiss Sheet Button.swift"; sourceTree = "<group>"; };
 		63D83109299982EA00FA802F /* Search Result Row.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Search Result Row.swift"; sourceTree = "<group>"; };
 		63D8C956287A1D0800483A52 /* Loading View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Loading View.swift"; sourceTree = "<group>"; };
+		C7240DA329C00BA40059B637 /* SidebarFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarFooter.swift; sourceTree = "<group>"; };
+		C7AFAF0129C0253700F8AAE2 /* DropTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropTarget.swift; sourceTree = "<group>"; };
+		C7AFAF0329C0255C00F8AAE2 /* Dump.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dump.swift; sourceTree = "<group>"; };
+		C7AFAF0529C0298800F8AAE2 /* DropFile Pane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DropFile Pane.swift"; sourceTree = "<group>"; };
 		C7E356C529BFD2AD00F5B2DD /* Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
-		C7E356C729BFF24200F5B2DD /* HomeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -436,7 +442,7 @@
 			isa = PBXGroup;
 			children = (
 				637402D9299BF878001AB7B1 /* Sidebar View.swift */,
-				C7E356C729BFF24200F5B2DD /* HomeButton.swift */,
+				C7240DA329C00BA40059B637 /* SidebarFooter.swift */,
 			);
 			path = Sidebar;
 			sourceTree = "<group>";
@@ -493,6 +499,7 @@
 		639A7D812871D07800B50280 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C7AFAF0029C0250300F8AAE2 /* DumpBundle */,
 				637402D8299BF86C001AB7B1 /* Sidebar */,
 				63D51F6C299AAFC600203F3F /* Maintenance */,
 				63D51F63299A98F800203F3F /* Settings */,
@@ -584,6 +591,7 @@
 				6382C8FA299D6E5D00354B19 /* General Pane.swift */,
 				6342117F29AA9CBB00E2563B /* Maintenance Pane.swift */,
 				630D08B829B67E4300802201 /* Brew Pane.swift */,
+				C7AFAF0529C0298800F8AAE2 /* DropFile Pane.swift */,
 			);
 			path = Panes;
 			sourceTree = "<group>";
@@ -651,6 +659,15 @@
 				63D83109299982EA00FA802F /* Search Result Row.swift */,
 			);
 			path = Reusables;
+			sourceTree = "<group>";
+		};
+		C7AFAF0029C0250300F8AAE2 /* DumpBundle */ = {
+			isa = PBXGroup;
+			children = (
+				C7AFAF0129C0253700F8AAE2 /* DropTarget.swift */,
+				C7AFAF0329C0255C00F8AAE2 /* Dump.swift */,
+			);
+			path = DumpBundle;
 			sourceTree = "<group>";
 		};
 		C7E356C429BFD28B00F5B2DD /* Bundle */ = {
@@ -743,8 +760,10 @@
 				63006E0D29ACC78400243E29 /* Package Dependency.swift in Sources */,
 				6382C8F9299D6C1D00354B19 /* Package Sorting.swift in Sources */,
 				63D831052999331D00FA802F /* Sheet with Title.swift in Sources */,
+				C7AFAF0629C0298800F8AAE2 /* DropFile Pane.swift in Sources */,
 				6382C90A299DA11F00354B19 /* Purge Brew Cache.swift in Sources */,
 				63006E0A29ACC6AC00243E29 /* Get Package Dependencies.swift in Sources */,
+				C7AFAF0229C0253700F8AAE2 /* DropTarget.swift in Sources */,
 				634065782871AB3A001A2178 /* Shell Interface.swift in Sources */,
 				63D83103299928B400FA802F /* Headline with Subheadline.swift in Sources */,
 				632FD2952995A3920029FC49 /* Add Tap.swift in Sources */,
@@ -762,6 +781,7 @@
 				6342117A29AA52B900E2563B /* Delete Cached Downloads.swift in Sources */,
 				6340657A2871AC27001A2178 /* Brew Data Storage.swift in Sources */,
 				633289E729A68A61004B2930 /* Package Installation Steps.swift in Sources */,
+				C7AFAF0429C0255C00F8AAE2 /* Dump.swift in Sources */,
 				63D51F6B299A9AC500203F3F /* Settings Pane Template.swift in Sources */,
 				63006E0829ACC60F00243E29 /* Get Package Homepage.swift in Sources */,
 				63C830C129984BA4002D11BB /* Button That Opens Websites.swift in Sources */,
@@ -776,7 +796,6 @@
 				6342118029AA9CBB00E2563B /* Maintenance Pane.swift in Sources */,
 				634065672871AA42001A2178 /* ContentView.swift in Sources */,
 				637402DA299BF878001AB7B1 /* Sidebar View.swift in Sources */,
-				C7E356C829BFF24200F5B2DD /* HomeButton.swift in Sources */,
 				63A8746A2990127D009F9533 /* PillText.swift in Sources */,
 				6382C90C299DA46100354B19 /* Perform Brew Health Check.swift in Sources */,
 				632FD292299596790029FC49 /* HelpButton.swift in Sources */,
@@ -825,6 +844,7 @@
 				6382C8FB299D6E5D00354B19 /* General Pane.swift in Sources */,
 				63AC993029A7814700B38D7C /* String - Contains Element in Array.swift in Sources */,
 				63958CFD2877341F00E0B807 /* AppDelegate.swift in Sources */,
+				C7240DA429C00BA40059B637 /* SidebarFooter.swift in Sources */,
 				633289F129A68CDB004B2930 /* Package in Progress of Being Installed.swift in Sources */,
 				63D51F71299AEE5100203F3F /* Complex with Icon.swift in Sources */,
 				63D51F68299A9A6000203F3F /* Installation Pane.swift in Sources */,

@@ -25,23 +25,20 @@ struct SidebarView: View
         List
         {
 //            Section("Home") {
-                NavigationLink(destination: StartPage()) {
-                    HStack{
-                        Image(systemName: isHovering ? "house.fill" : "house")
+//                NavigationLink(destination: StartPage()) {
+//                    HStack{
+//                        Image(systemName: isHovering ? "house.fill" : "house")
 //                            .resizable()
 //                            .scaledToFit()
 //                            .frame(width: 26.0, height: 26.0)
 //                        Text("Home")
-                    }
-                }
-//                .background(Color.pink)
-                .frame(maxWidth: .infinity, alignment: .center)
-//                .padding(0)
-                .onHover { hovering in
-                            isHovering = hovering
-                        }
+//                    }
+//                }
+//                .frame(maxWidth: .infinity, alignment: .center)
+//                .onHover { hovering in
+//                            isHovering = hovering
+//                        }
 //            }
-//            .collapsible(false)
             
             
             Section("Formulae (\(brewData.installedFormulae.count))")
@@ -160,6 +157,9 @@ struct SidebarView: View
         }
         .listStyle(SidebarListStyle())
         .frame(minWidth: 250)
+        .safeAreaInset(edge: .bottom, spacing: 0) {
+                    SidebarFooter()
+                }
         .searchable(text: $searchText, placement: .automatic, prompt: Text("Search"))
         .sheet(isPresented: $appState.isShowingMaintenanceSheet)
         {
@@ -181,14 +181,14 @@ struct SidebarView: View
                             })
             }
             
-            ToolbarItem {
-                Button(action: {
-//                    ContentView()
-                    
-                }, label: {
-                                Image(systemName: "house")
-                            })
-            }
+//            ToolbarItem {
+//                Button(action: {
+////                    ContentView()
+//                    
+//                }, label: {
+//                                Image(systemName: "house")
+//                            })
+//            }
             
             
         }

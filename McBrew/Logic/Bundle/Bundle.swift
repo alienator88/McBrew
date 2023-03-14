@@ -13,6 +13,7 @@ let dialog = NSOpenPanel();
 
 @MainActor
 func bundleDump()
+//_ updateProgressTracker: UpdateProgressTracker, appState: AppState
 {
     dialog.title                   = "Choose a folder where you'd like to dump your Brewfile";
     dialog.showsResizeIndicator    = true;
@@ -27,8 +28,18 @@ func bundleDump()
             let path: String = result!.path
             Task
             {
+//                updateProgressTracker.updateProgress = 0
+//
+//                appState.isShowingUpdateSheet = true
+//                updateProgressTracker.updateStage = .brewfile
+//                updateProgressTracker.updateProgress += 0.2
+                
                 let dumpResult = await shell(AppConstants.brewExecutablePath.absoluteString, ["bundle", "dump", "--file=\(path)/Brewfile", "--force"]).standardOutput
+//                updateProgressTracker.updateProgress += 0.3
                 print("Dump bundle result: \(dumpResult)\nBrewfile created at \(path)/Brewfile")
+
+//                appState.isShowingUpdateSheet = false
+
             }
         }
     } else {
@@ -57,7 +68,7 @@ func bundleFile(_ updateProgressTracker: UpdateProgressTracker, appState: AppSta
                 updateProgressTracker.updateProgress = 0
                 
                 appState.isShowingUpdateSheet = true
-                updateProgressTracker.updateStage = .updating
+                updateProgressTracker.updateStage = .brewfile
                 updateProgressTracker.updateProgress += 0.2
                 
                 let bundleResult = await shell(AppConstants.brewExecutablePath.absoluteString, ["bundle", "install", "--file=\(path)"]).standardOutput

@@ -43,7 +43,10 @@ struct ContentView: View
             .toolbar
             {
 //                ToolbarItem(placement: .navigation) {
-//                                Button(action: toggleSidebar, label: {
+//                    Button(action: {
+//                        NavigationLink(destination: StartPage()) {
+//                        }
+//                    }, label: {
 //                                    Image(systemName: "sidebar.leading")
 //                                })
 //                }

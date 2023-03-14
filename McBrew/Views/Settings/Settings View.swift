@@ -29,6 +29,10 @@ struct SettingsView: View
                 .tabItem {
                     Label("Homebrew", systemImage: "cup.and.saucer")
                 }
+            DropPane()
+                .tabItem {
+                    Label("Bundle", systemImage: "arrow.down.app")
+                }
             /*InstallationAndUninstallationPane()
                 .tabItem
                 {

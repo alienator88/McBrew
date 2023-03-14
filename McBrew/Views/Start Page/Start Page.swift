@@ -197,37 +197,6 @@ struct StartPage: View
                                 }
                             }
                             
-                            // Dump Buttons
-                            HStackLayout(){
-                                Button
-                                {
-                                    bundleDump()
-                                } label: {
-                                    Label
-                                    {
-                                        Text("Dump Bundle")
-                                    } icon: {
-                                        Image(systemName: "square.stack.3d.down.right")
-                                    }
-                                }
-                                .help("Dump all packages to a Brewfile")
-                                
-                                Button
-                                {
-                                    bundleFile(updateProgressTracker, appState: appState)
-                                } label: {
-                                    Label
-                                    {
-                                        Text("Install Brewfile")
-                                    } icon: {
-                                        Image(systemName: "plus")
-                                    }
-                                }
-                                .help("Restore package state from Brewfile ")
-                            }
-                            .frame(maxWidth: .infinity, alignment: .trailing)
-                            .padding()
-                            
                         }
                     }
 
