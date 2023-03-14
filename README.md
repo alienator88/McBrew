@@ -1,34 +1,31 @@
 # McBrew
 
-A fast GUI for Homebrew written in SwiftUI. This is my personal spin on the awesome version from buresdv.
-Adding in features and redesigning the look to fit more of my needs. Also using this as a learning tool for Swift as I'm new to it.
+A fast GUI for Homebrew written in SwiftUI. This is my personal spin on the awesome version from [buresdv](https://github.com/buresdv/Cork).
+Adding in features and redesigning the look to fit more of my needs. Also using this as a learning opportunity for Swift as I'm new to it.
 
-## Thanks
+## Screenshots
 
-Much appreciation for the original from https://github.com/buresdv
+### Dashboard
+![Screenshot 2023-03-14 at 1 09 30 PM](https://user-images.githubusercontent.com/6263626/225112653-de40295b-4391-4417-9763-f850634c4ccb.png)
+### Packages
+![Screenshot 2023-03-14 at 1 09 22 PM](https://user-images.githubusercontent.com/6263626/225112684-4ee7f402-edb8-4de7-abbb-0a10f2863b57.png)
+![Screenshot 2023-03-14 at 1 09 49 PM](https://user-images.githubusercontent.com/6263626/225112735-ae912a79-475c-44c2-93d2-bb9b6d6aefab.png)
+### Maintenance
+![Screenshot 2023-03-14 at 1 09 37 PM](https://user-images.githubusercontent.com/6263626/225112712-32d34114-a665-4054-994a-1330dc58159d.png)
+![Screenshot 2023-03-14 at 1 11 12 PM](https://user-images.githubusercontent.com/6263626/225112874-f40aa849-6540-4403-a736-0c2061b4a497.png)
+### Settings
+![Screenshot 2023-03-14 at 1 10 27 PM](https://user-images.githubusercontent.com/6263626/225112756-52fa227a-3cc5-4dd5-8b4e-f8347f0c38ff.png)
+![Screenshot 2023-03-14 at 1 10 39 PM](https://user-images.githubusercontent.com/6263626/225112812-6cfe3a96-a034-4cc9-b4e6-513babb62b1c.png)
+
+
 
 ## Getting McBrew
 
-Pre-compiled, always up-to-date versions are available from my releases page.
+Pre-compiled, always up-to-date versions are available from my releases page. (See compilation instructions below)
 
-## Screenshots
-### Main Window
-![Start Page](https://i.imgur.com/N8HQtcL.jpg)
+You'll need to run this before opening the app as I don't have a paid developer account: 
 
-### Package Info
-![Package Info](https://i.imgur.com/L7LyzmS.jpg)
-![Package Info](https://i.imgur.com/ZHaEcOA.jpg)
-
-### Install Package
-![Install Package](https://i.imgur.com/CtqSCUu.jpg)
-![Install Package](https://i.imgur.com/Agc7zxX.jpg)
-
-### Tap Taps
-![Tap Taps](https://i.imgur.com/Dya1SkM.jpg)
-
-### Brew Maintenance
-![Brew Maintenance](https://i.imgur.com/LGkDErZ.jpg)
-![Brew Maintenance Results](https://i.imgur.com/GbTerQX.jpg)
+`sudo xattr -r -d com.apple.quarantine "PATH_TO_APP"`
 
 ## Compiling McBrew
 
@@ -62,6 +59,10 @@ Instructions:
 5. A new window will open. From the list of McBrew rows, select the topmost one, and click `Distribute App`
 6. Click `Copy App`
 7. Open the resulting folder. You'll see an app called McBrew. Drag McBrew to your `/Applications/` folder, and you're done!
+
+## Thanks
+
+Much appreciation for the original, Cork, from https://github.com/buresdv
 
 ## License
 
