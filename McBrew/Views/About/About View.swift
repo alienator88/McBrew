@@ -33,7 +33,7 @@ struct AboutView: View
     {
         HStack(alignment: .top, spacing: 20)
         {
-            Image(nsImage: NSImage(named: "AppIcon") ?? NSImage())
+            Image(nsImage: NSImage(named: "AppIcon - Barrel") ?? NSImage())
                 .resizable()
                 .frame(width: 150, height: 150)
                 .transaction { $0.animation = nil }
