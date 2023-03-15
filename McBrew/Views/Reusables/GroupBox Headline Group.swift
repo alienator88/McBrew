@@ -14,7 +14,7 @@ struct GroupBoxHeadlineGroup: View
     let title2: String
     let count: String
     let mainText: String
-
+    
     var body: some View
     {
         HStack(spacing: 15)
@@ -26,7 +26,7 @@ struct GroupBoxHeadlineGroup: View
                     .scaledToFit()
                     .frame(width: 26, height: 26)
             }
-
+            
             VStack(alignment: .leading, spacing: 2)
             {
                 HStack(spacing: 0) {
@@ -49,7 +49,7 @@ struct GroupBoxHeadlineGroupAnalytics: View
     let title: String
     let status: String
     let mainText: String
-
+    
     var body: some View
     {
         HStack(spacing: 15)
@@ -61,7 +61,7 @@ struct GroupBoxHeadlineGroupAnalytics: View
                     .scaledToFit()
                     .frame(width: 26, height: 26)
             }
-
+            
             VStack(alignment: .leading, spacing: 2)
             {
                 HStack(spacing: 0) {
@@ -77,10 +77,19 @@ struct GroupBoxHeadlineGroupAnalytics: View
     }
 }
 
+
+
+struct PathStruct: Identifiable {
+    let folder: String
+    let path: String
+    let id = UUID()
+}
+
 struct GroupBoxHeadlineGroupPaths: View
 {
     var image: String?
     let title: String
+    let info: String
     let a1: String
     let a2: String
     let b1: String
@@ -89,11 +98,13 @@ struct GroupBoxHeadlineGroupPaths: View
     let c2: String
     let d1: String
     let d2: String
-
+        
     var body: some View
     {
+                
         HStack(spacing: 15)
         {
+
             if let image
             {
                 Image(systemName: image)
@@ -101,45 +112,71 @@ struct GroupBoxHeadlineGroupPaths: View
                     .scaledToFit()
                     .frame(width: 26, height: 26)
             }
-
+            
             VStack(alignment: .leading, spacing: 2)
             {
-                Text(title)
-                
-                HStack(spacing: 0){
-                    Text(a1)
-                        .foregroundColor(.secondary)
-                        .bold()
-                    Text(a2)
-                        .font(.subheadline)
-                        .foregroundColor(.secondary)
+                HStack(spacing: 0) {
+                    Text(title)
                 }
-                HStack(spacing: 0){
-                    Text(b1)
-                        .foregroundColor(.secondary)
-                        .bold()
-                    Text(b2)
-                        .font(.subheadline)
-                        .foregroundColor(.secondary)
-                }
-                HStack(spacing: 0){
-                    Text(c1)
-                        .foregroundColor(.secondary)
-                        .bold()
-                    Text(c2)
-                        .font(.subheadline)
-                        .foregroundColor(.secondary)
-                }
-                HStack(spacing: 0){
-                    Text(d1)
-                        .foregroundColor(.secondary)
-                        .bold()
-                    Text(d2)
-                        .font(.subheadline)
-                        .foregroundColor(.secondary)
-                }
+                Text(info)
+                    .font(.subheadline)
+                    .foregroundColor(.secondary)
             }
+            
+
         }
         .padding(10)
+        
+        HStack {
+            
+            let allPaths = [
+                PathStruct(folder: a1, path: a2),
+                PathStruct(folder: b1, path: b2),
+                PathStruct(folder: c1, path: c2),
+                PathStruct(folder: d1, path: d2),
+            ]
+            
+            Table(allPaths) {
+                TableColumn("Item") { item in
+                    Text(item.folder).contextMenu {
+                        Button
+                        {
+                            if item.folder.contains("Homebrew") {
+                                let url = URL(filePath: item.path)
+                                let newPath = url.deletingLastPathComponent()
+                                NSWorkspace.shared.selectFile(nil, inFileViewerRootedAtPath: newPath.path)
+                            } else {
+                                NSWorkspace.shared.selectFile(nil, inFileViewerRootedAtPath: item.path)
+                            }
+                            
+                        } label: {
+                            Text("Open \(item.folder) path")
+                        }
+                    }
+                }.width(100)
+                TableColumn("Path") { item in
+                    Text(item.path).contextMenu {
+                        Button
+                        {
+                            if item.folder.contains("Homebrew") {
+                                let url = URL(filePath: item.path)
+                                let newPath = url.deletingLastPathComponent()
+                                NSWorkspace.shared.selectFile(nil, inFileViewerRootedAtPath: newPath.path)
+                            } else {
+                                NSWorkspace.shared.selectFile(nil, inFileViewerRootedAtPath: item.path)
+                            }
+                        } label: {
+                            Text("Open \(item.folder) path")
+                        }
+                    }
+                }
+
+            }
+            .frame(height: 140)
+            
+        }
+        
     }
 }
+
+

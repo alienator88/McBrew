@@ -120,6 +120,7 @@ struct McBrewApp: App
         }
         .windowStyle(.automatic)
         .windowToolbarStyle(.automatic)
+        
 
         Settings
         {

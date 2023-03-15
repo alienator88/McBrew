@@ -127,42 +127,7 @@ struct StartPage: View
                                 }
                             }
                             
-                            GroupBox
-                            {
-                                VStack(alignment: .leading)
-                                {
-                                    let analyticsStatus = allowBrewAnalytics ? "ENABLED" : "DISABLED"
-                                    GroupBoxHeadlineGroupAnalytics(
-                                        image: "chart.bar",
-                                        title: "Homebrew analytics are ",
-                                        status: analyticsStatus,
-                                        mainText: "\(allowBrewAnalytics ? "Homebrew is collecting various anonymized data, such as which packages you have installed" : "Homebrew is not collecting any data about how you use it")"
-                                    )
-                                    .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
-                                }
-                            }
-                            
-                            GroupBox
-                            {
-                                VStack(alignment: .leading)
-                                {
-                                    GroupBoxHeadlineGroupPaths(
-                                        image: "folder",
-                                        title: "Homebrew installation paths",
-                                        a1: "Brew: ",
-                                        a2: "\(AppConstants.brewExecutablePath)",
-                                        b1: "Cellar: ",
-                                        b2: "\(AppConstants.brewCellarPath)",
-                                        c1: "Cask: ",
-                                        c2: "\(AppConstants.brewCaskPath)",
-                                        d1: "Cache: ",
-                                        d2: "\(AppConstants.brewCachePath)"
-                                    )
-                                    .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
-                                }
-                            }
-                            
-                            if appState.cachedDownloadsFolderSize != 0
+                            if appState.cachedDownloadsFolderSize >= 0 // changed from != so the category is visible all the time
                             {
                                 GroupBox
                                 {
@@ -192,11 +157,49 @@ struct StartPage: View
                                             }
                                             .padding(.trailing)
                                             .controlSize(.large)
+                                            .disabled((appState.cachedDownloadsFolderSize > 0) ? false : true)
+                                            .opacity((appState.cachedDownloadsFolderSize > 0) ? 1.0 : 0.0)
+                                            
                                         }
                                     }
                                 }
                             }
                             
+                            GroupBox
+                            {
+                                VStack(alignment: .leading)
+                                {
+                                    let analyticsStatus = allowBrewAnalytics ? "ENABLED" : "DISABLED"
+                                    GroupBoxHeadlineGroupAnalytics(
+                                        image: "chart.bar",
+                                        title: "Homebrew analytics are ",
+                                        status: analyticsStatus,
+                                        mainText: "\(allowBrewAnalytics ? "Homebrew is collecting various anonymized data, such as which packages you have installed" : "Homebrew is not collecting any data about how you use it")"
+                                    )
+                                    .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
+                                }
+                            }
+                            
+                            GroupBox
+                            {
+                                VStack(alignment: .leading)
+                                {
+                                    GroupBoxHeadlineGroupPaths(
+                                        image: "folder",
+                                        title: "Homebrew directories",
+                                        info: "Right click an item from the list to navigate to the respective directory",
+                                        a1: "Homebrew",
+                                        a2: "\(AppConstants.brewExecutablePath)",
+                                        b1: "Cellar",
+                                        b2: "\(AppConstants.brewCellarPath)",
+                                        c1: "Cask",
+                                        c2: "\(AppConstants.brewCaskPath)",
+                                        d1: "Cache",
+                                        d2: "\(AppConstants.brewCachePath)"
+                                    )
+                                    .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
+                                }
+                            }
                         }
                     }
 
