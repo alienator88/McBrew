@@ -1,5 +1,7 @@
 # McBrew
 
+<img src="https://user-images.githubusercontent.com/6263626/225120744-5e820fc6-2932-44dc-8b62-aa613542fad8.png" width="100" height="100">
+
 A fast GUI for Homebrew written in SwiftUI. This is my personal spin on the awesome version from [buresdv](https://github.com/buresdv/Cork).
 Adding in features and redesigning the look to fit more of my needs. Also using this as a learning opportunity for Swift as I'm new to it.
 
