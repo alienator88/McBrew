@@ -34,7 +34,9 @@ struct McBrewApp: App
                 {
                     NSWindow.allowsAutomaticWindowTabbing = false
                 }
+//                .fixedSize()
         }
+//        .windowResizability(.contentSize)
         .commands
         {
             CommandGroup(replacing: CommandGroupPlacement.appInfo)

@@ -34,7 +34,7 @@ struct ContentView: View
             {
                 SidebarView()
 
-                StartPage()
+                StartDash() // StartPage for old view
                     .frame(minWidth: 600, minHeight: 500)
             }
             .navigationTitle("McBrew")
@@ -122,6 +122,7 @@ struct ContentView: View
                 }
             }
         }
+        .frame(minHeight: 650)
         .onAppear
         {
             print("Brew executable path: \(AppConstants.brewExecutablePath.absoluteString)")
@@ -131,8 +132,8 @@ struct ContentView: View
 
                 brewData.installedFormulae = await loadUpFormulae(appState: appState, sortBy: sortPackagesBy)
                 brewData.installedCasks = await loadUpCasks(appState: appState, sortBy: sortPackagesBy)
-                
                 availableTaps.addedTaps = await loadUpTappedTaps()
+                _ = await runHealthCheck(appState: appState)
                 
                 if await analyticsQueryCommand.standardOutput.contains("Analytics are enabled")
                 {

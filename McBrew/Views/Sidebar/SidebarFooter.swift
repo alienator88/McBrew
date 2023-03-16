@@ -21,7 +21,7 @@ struct SidebarFooter: View {
 //                .foregroundColor(Color.primary.opacity(0.4))
             HStack{
 
-                NavigationLink(destination: StartPage()) {
+                NavigationLink(destination: StartDash()) { //StartPage for old view
                     HStack{
                         Image(systemName: isHovering ? "house.fill" : "house")
                         Text("Dashboard")

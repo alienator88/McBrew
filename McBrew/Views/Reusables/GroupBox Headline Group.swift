@@ -27,7 +27,7 @@ struct GroupBoxHeadlineGroup: View
                     .frame(width: 26, height: 26)
             }
             
-            VStack(alignment: .leading, spacing: 2)
+            VStack(alignment: .center, spacing: 2)
             {
                 HStack(spacing: 0) {
                     Text(title1)
@@ -62,7 +62,7 @@ struct GroupBoxHeadlineGroupAnalytics: View
                     .frame(width: 26, height: 26)
             }
             
-            VStack(alignment: .leading, spacing: 2)
+            VStack(alignment: .center, spacing: 2)
             {
                 HStack(spacing: 0) {
                     Text(title)

@@ -104,6 +104,9 @@
 		63D8310A299982EA00FA802F /* Search Result Row.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D83109299982EA00FA802F /* Search Result Row.swift */; };
 		63D8C957287A1D0800483A52 /* Loading View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D8C956287A1D0800483A52 /* Loading View.swift */; };
 		C7240DA429C00BA40059B637 /* SidebarFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7240DA329C00BA40059B637 /* SidebarFooter.swift */; };
+		C72BEA6829C2343A00A23D3C /* runHealthCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72BEA6729C2343A00A23D3C /* runHealthCheck.swift */; };
+		C72BEA6A29C23B8A00A23D3C /* StartDash.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72BEA6929C23B8A00A23D3C /* StartDash.swift */; };
+		C72BEA6C29C268F200A23D3C /* getBrewVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72BEA6B29C268F200A23D3C /* getBrewVersion.swift */; };
 		C7AFAF0229C0253700F8AAE2 /* DropTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7AFAF0129C0253700F8AAE2 /* DropTarget.swift */; };
 		C7AFAF0429C0255C00F8AAE2 /* Dump.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7AFAF0329C0255C00F8AAE2 /* Dump.swift */; };
 		C7AFAF0629C0298800F8AAE2 /* DropFile Pane.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7AFAF0529C0298800F8AAE2 /* DropFile Pane.swift */; };
@@ -208,6 +211,9 @@
 		63D83109299982EA00FA802F /* Search Result Row.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Search Result Row.swift"; sourceTree = "<group>"; };
 		63D8C956287A1D0800483A52 /* Loading View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Loading View.swift"; sourceTree = "<group>"; };
 		C7240DA329C00BA40059B637 /* SidebarFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarFooter.swift; sourceTree = "<group>"; };
+		C72BEA6729C2343A00A23D3C /* runHealthCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = runHealthCheck.swift; sourceTree = "<group>"; };
+		C72BEA6929C23B8A00A23D3C /* StartDash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartDash.swift; sourceTree = "<group>"; };
+		C72BEA6B29C268F200A23D3C /* getBrewVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = getBrewVersion.swift; sourceTree = "<group>"; };
 		C7AFAF0129C0253700F8AAE2 /* DropTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropTarget.swift; sourceTree = "<group>"; };
 		C7AFAF0329C0255C00F8AAE2 /* Dump.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dump.swift; sourceTree = "<group>"; };
 		C7AFAF0529C0298800F8AAE2 /* DropFile Pane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DropFile Pane.swift"; sourceTree = "<group>"; };
@@ -297,6 +303,7 @@
 			isa = PBXGroup;
 			children = (
 				6330531829966E9F00F34F94 /* Start Page.swift */,
+				C72BEA6929C23B8A00A23D3C /* StartDash.swift */,
 			);
 			path = "Start Page";
 			sourceTree = "<group>";
@@ -617,6 +624,8 @@
 			isa = PBXGroup;
 			children = (
 				6382C906299DA01A00354B19 /* Steps */,
+				C72BEA6729C2343A00A23D3C /* runHealthCheck.swift */,
+				C72BEA6B29C268F200A23D3C /* getBrewVersion.swift */,
 			);
 			path = Maintenance;
 			sourceTree = "<group>";
@@ -780,6 +789,7 @@
 				637E006828733C1C005C9890 /* Search for Package by ID.swift in Sources */,
 				6342117A29AA52B900E2563B /* Delete Cached Downloads.swift in Sources */,
 				6340657A2871AC27001A2178 /* Brew Data Storage.swift in Sources */,
+				C72BEA6A29C23B8A00A23D3C /* StartDash.swift in Sources */,
 				633289E729A68A61004B2930 /* Package Installation Steps.swift in Sources */,
 				C7AFAF0429C0255C00F8AAE2 /* Dump.swift in Sources */,
 				63D51F6B299A9AC500203F3F /* Settings Pane Template.swift in Sources */,
@@ -841,9 +851,11 @@
 				633289E929A68A8A004B2930 /* Package Installation Stage.swift in Sources */,
 				63B8D4F8299E3DAD00AA7CFA /* Sort By Size.swift in Sources */,
 				637E006E2873419B005C9890 /* Install Progress Tracker.swift in Sources */,
+				C72BEA6829C2343A00A23D3C /* runHealthCheck.swift in Sources */,
 				6382C8FB299D6E5D00354B19 /* General Pane.swift in Sources */,
 				63AC993029A7814700B38D7C /* String - Contains Element in Array.swift in Sources */,
 				63958CFD2877341F00E0B807 /* AppDelegate.swift in Sources */,
+				C72BEA6C29C268F200A23D3C /* getBrewVersion.swift in Sources */,
 				C7240DA429C00BA40059B637 /* SidebarFooter.swift in Sources */,
 				633289F129A68CDB004B2930 /* Package in Progress of Being Installed.swift in Sources */,
 				63D51F71299AEE5100203F3F /* Complex with Icon.swift in Sources */,

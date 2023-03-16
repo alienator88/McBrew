@@ -13,23 +13,23 @@ struct StartPage: View
     
     @EnvironmentObject var brewData: BrewDataStorage
     @EnvironmentObject var availableTaps: AvailableTaps
-
+    
     @EnvironmentObject var appState: AppState
     
     @EnvironmentObject var updateProgressTracker: UpdateProgressTracker
-
+    
     @State private var isLoadingUpgradeablePackages = true
     @State private var upgradeablePackages: [BrewPackage] = .init()
     
     @State private var isShowingFastCacheDeletionMaintenanceView: Bool = false
-
+    
     @State private var isDisclosureGroupExpanded: Bool = false
-
+    
     var body: some View
     {
         VStack
         {
-            if isLoadingUpgradeablePackages
+            if isLoadingUpgradeablePackages && appState.isRunningHealthCheck
             {
                 ProgressView
                 {
@@ -40,56 +40,39 @@ struct StartPage: View
             {
                 VStack
                 {
-                    VStack(alignment: .leading)
+                    VStack(alignment: .center)
                     {
-//                        Text("Current Status")
-//                            .font(.title)
-
-                        if upgradeablePackages.count != 0
-                        {
-                            GroupBox
-                            {
-                                Grid
-                                {
-                                    GridRow(alignment: .firstTextBaseline)
-                                    {
-                                        VStack(alignment: .leading)
-                                        {
-                                            Text(upgradeablePackages.count == 1 ? "There is 1 outdated package" : "There are \(upgradeablePackages.count) outdated packages")
-                                                .font(.headline)
-                                            DisclosureGroup(isExpanded: $isDisclosureGroupExpanded)
-                                            {} label: {
-                                                Text("Outdated packages")
-                                                    .font(.subheadline)
-                                            }
-                                            
-                                            if isDisclosureGroupExpanded
-                                            {
-                                                List(upgradeablePackages)
-                                                { package in
-                                                    Text(package.name)
-                                                }
-                                                .listStyle(.bordered(alternatesRowBackgrounds: true))
-                                                .frame(height: 100)
-                                            }
-                                        }
-
-                                        Button
-                                        {
-                                            updateBrewPackages(updateProgressTracker, appState: appState)
-                                        } label: {
-                                            Text("Update")
-                                        }
-                                    }
-                                }
-                            }
-                        }
-
-                        if !appState.isLoadingFormulae && !appState.isLoadingCasks
+                        HStack
                         {
                             Text("Dashboard")
-                                .font(.title2)
+                                .font(.title)
                             
+                            Spacer()
+                            
+                            if appState.isHealthCheckGood {
+                                HStack {
+                                    Image(systemName: "stethoscope")
+                                        .foregroundColor(.green)
+                                    Text("Homebrew is healthy")
+                                }
+                                .help("You're all set, nothing to do")
+                            } else {
+                                HStack {
+                                    Image(systemName: "stethoscope")
+                                        .foregroundColor(.red)
+                                    Text("Homebrew is not healthy")
+                                }
+                                .help("Run the healthcheck from Maintenance to get more details")
+                            }
+                            
+                        }
+                        
+                        
+                        
+                        
+                        if !appState.isLoadingFormulae && !appState.isLoadingCasks && !appState.isRunningHealthCheck
+                        {
+
                             GroupBox
                             {
                                 VStack(alignment: .leading)
@@ -102,9 +85,9 @@ struct StartPage: View
                                         mainText: "Formulae are packages that are used via terminal"
                                     )
                                     .animation(.none, value: brewData.installedFormulae.count)
-
+                                    
                                     Divider()
-
+                                    
                                     GroupBoxHeadlineGroup(
                                         image: "text.and.command.macwindow",
                                         title1: "You have ",
@@ -113,9 +96,9 @@ struct StartPage: View
                                         mainText: "Casks are packages that have graphical windows"
                                     )
                                     .animation(.none, value: brewData.installedCasks.count)
-
+                                    
                                     Divider()
-
+                                    
                                     GroupBoxHeadlineGroup(
                                         image: "spigot",
                                         title1: "You have ",
@@ -124,6 +107,71 @@ struct StartPage: View
                                         mainText: "Taps provide additional packages via 3rd party repositories"
                                     )
                                     .animation(.none, value: availableTaps.addedTaps.count)
+                                }
+                            }
+                            
+                            if upgradeablePackages.count >= 0 // Changed from != to show the section always
+                            {
+                                GroupBox
+                                {
+                                    VStack
+                                    {
+                                        HStack
+                                        {
+                                            GroupBoxHeadlineGroup(
+                                                image: "clock.arrow.circlepath",
+                                                title1: "You have ",
+                                                title2: " outdated \(upgradeablePackages.count == 1 ? "package" : "packages")",
+                                                count: "\(upgradeablePackages.count)",
+                                                mainText: "This shows out of date packages that should be updated"
+                                            )
+                                            
+                                            Spacer()
+                                            
+                                            if upgradeablePackages.count > 0
+                                            {
+                                                Button
+                                                {
+                                                    updateBrewPackages(updateProgressTracker, appState: appState)
+                                                } label: {
+                                                    Image(systemName: "arrow.down.app")
+                                                        .resizable()
+                                                        .scaledToFit()
+                                                        .frame(width: 18.0, height: 18.0)
+                                                }
+                                                .padding(.trailing)
+                                                .controlSize(.large)
+                                                .help("Update packages")
+                                            }
+                                            
+                                            
+                                        }
+                                        
+                                        HStack
+                                        {
+                                            
+                                            if upgradeablePackages.count > 0 {
+                                                DisclosureGroup(isExpanded: $isDisclosureGroupExpanded)
+                                                {} label: {
+                                                    Text("Outdated packages")
+                                                        .font(.subheadline)
+                                                    
+                                                }
+                                            }
+                                            
+                                            if isDisclosureGroupExpanded
+                                            {
+                                                List(upgradeablePackages)
+                                                { package in
+                                                    Text(package.name)
+                                                }
+                                                .listStyle(.bordered(alternatesRowBackgrounds: true))
+                                                .frame(height: 100)
+                                            }
+                                            
+                                        }
+                                        .padding(.leading)
+                                    }
                                 }
                             }
                             
@@ -140,25 +188,27 @@ struct StartPage: View
                                                 title1: "You have ",
                                                 title2: " of cached downloads",
                                                 count: "\(appState.cachedDownloadsFolderSize.convertDirectorySizeToPresentableFormat(size: appState.cachedDownloadsFolderSize))",
-                                                mainText: "These files are leftovers from completed package installations. They're safe to remove."
+                                                mainText: "Leftovers from completed package installations. They're safe to remove."
                                             )
-
+                                            
                                             Spacer()
-
-                                            Button {
-                                                appState.isShowingFastCacheDeletionMaintenanceView = true
-                                            } label: {
-                                                Image(systemName: "trash")
-                                                    .resizable()
-                                                    .scaledToFit()
-                                                    .frame(width: 18.0, height: 18.0)
-                                                
-//                                                Text("Empty Download Cache")
+                                            
+                                            if appState.cachedDownloadsFolderSize > 0
+                                            {
+                                                Button {
+                                                    appState.isShowingFastCacheDeletionMaintenanceView = true
+                                                } label: {
+                                                    Image(systemName: "trash")
+                                                        .resizable()
+                                                        .scaledToFit()
+                                                        .frame(width: 18.0, height: 18.0)
+                                                }
+                                                .padding(.trailing)
+                                                .controlSize(.large)
+                                                .help("Delete cached downloads")
                                             }
-                                            .padding(.trailing)
-                                            .controlSize(.large)
-                                            .disabled((appState.cachedDownloadsFolderSize > 0) ? false : true)
-                                            .opacity((appState.cachedDownloadsFolderSize > 0) ? 1.0 : 0.0)
+                                            
+                                            
                                             
                                         }
                                     }
@@ -202,22 +252,14 @@ struct StartPage: View
                             }
                         }
                     }
-
+                    
                     Spacer()
-
+                    
                     HStack
                     {
                         Spacer()
                         
                         UninstallationProgressWheel()
-
-//                        Button
-//                        {
-//                            print("Would perform maintenance")
-//                            appState.isShowingMaintenanceSheet.toggle()
-//                        } label: {
-//                            Text("Maintenance")
-//                        }
                     }
                 }
             }

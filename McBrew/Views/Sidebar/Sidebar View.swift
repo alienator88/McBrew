@@ -24,23 +24,6 @@ struct SidebarView: View
     {
         List
         {
-//            Section("Home") {
-//                NavigationLink(destination: StartPage()) {
-//                    HStack{
-//                        Image(systemName: isHovering ? "house.fill" : "house")
-//                            .resizable()
-//                            .scaledToFit()
-//                            .frame(width: 26.0, height: 26.0)
-//                        Text("Home")
-//                    }
-//                }
-//                .frame(maxWidth: .infinity, alignment: .center)
-//                .onHover { hovering in
-//                            isHovering = hovering
-//                        }
-//            }
-            
-            
             Section("Formulae (\(brewData.installedFormulae.count))")
             {
                 if !appState.isLoadingFormulae
