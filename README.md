@@ -9,8 +9,7 @@ Adding in features and redesigning the look to fit more of my needs. Also using 
 
 ### Dashboard
 ![Dark](https://user-images.githubusercontent.com/6263626/225772803-2160b615-0e5a-4f36-a0bf-2378b6690be1.png)
-![Light](https://user-images.githubusercontent.com/6263626/225772824-0ab50f50-fd19-475d-b853-b79405ec6dfe.png)
-
+![Screenshot 2023-03-16 at 5 22 31 PM](https://user-images.githubusercontent.com/6263626/225773927-5f75e352-a03e-4849-a221-3b976b1009cf.png)
 ### Packages
 ![Screenshot 2023-03-14 at 1 09 22 PM](https://user-images.githubusercontent.com/6263626/225112684-4ee7f402-edb8-4de7-abbb-0a10f2863b57.png)
 ![Screenshot 2023-03-14 at 1 09 49 PM](https://user-images.githubusercontent.com/6263626/225112735-ae912a79-475c-44c2-93d2-bb9b6d6aefab.png)
