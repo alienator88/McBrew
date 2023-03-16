@@ -8,7 +8,9 @@ Adding in features and redesigning the look to fit more of my needs. Also using 
 ## Screenshots
 
 ### Dashboard
-![Screenshot 2023-03-14 at 1 09 30 PM](https://user-images.githubusercontent.com/6263626/225112653-de40295b-4391-4417-9763-f850634c4ccb.png)
+![Dark](https://user-images.githubusercontent.com/6263626/225772803-2160b615-0e5a-4f36-a0bf-2378b6690be1.png)
+![Light](https://user-images.githubusercontent.com/6263626/225772824-0ab50f50-fd19-475d-b853-b79405ec6dfe.png)
+
 ### Packages
 ![Screenshot 2023-03-14 at 1 09 22 PM](https://user-images.githubusercontent.com/6263626/225112684-4ee7f402-edb8-4de7-abbb-0a10f2863b57.png)
 ![Screenshot 2023-03-14 at 1 09 49 PM](https://user-images.githubusercontent.com/6263626/225112735-ae912a79-475c-44c2-93d2-bb9b6d6aefab.png)
@@ -17,7 +19,8 @@ Adding in features and redesigning the look to fit more of my needs. Also using 
 ![Screenshot 2023-03-14 at 1 11 12 PM](https://user-images.githubusercontent.com/6263626/225112874-f40aa849-6540-4403-a736-0c2061b4a497.png)
 ### Settings
 ![Screenshot 2023-03-14 at 1 10 27 PM](https://user-images.githubusercontent.com/6263626/225112756-52fa227a-3cc5-4dd5-8b4e-f8347f0c38ff.png)
-![Screenshot 2023-03-14 at 1 10 39 PM](https://user-images.githubusercontent.com/6263626/225112812-6cfe3a96-a034-4cc9-b4e6-513babb62b1c.png)
+![Drop](https://user-images.githubusercontent.com/6263626/225772842-51344716-543d-4868-9ff5-456ec562b96f.png)
+
 
 
 
