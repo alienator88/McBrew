@@ -55,7 +55,15 @@ struct DropPane: View
                 Text("Installing packages..").foregroundColor(Color("drop")).opacity(0.5).font(.callout)
             }
         } else {
-            Text("Drop Brewfile here to install packages").foregroundColor(Color("drop")).opacity(0.5).font(.callout)
+            VStack {
+                Image(systemName: "arrow.down.app")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 40, height: 40)
+                    .foregroundColor(Color("drop")).opacity(0.5)
+                Text("Drop Brewfile here to install packages").foregroundColor(Color("drop")).opacity(0.5).font(.callout)
+            }
+            
         }
     }
     

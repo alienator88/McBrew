@@ -75,39 +75,39 @@ struct StartPage: View
 
                             GroupBox
                             {
-                                VStack(alignment: .leading)
-                                {
-                                    GroupBoxHeadlineGroup(
-                                        image: "terminal",
-                                        title1: "You have ",
-                                        title2: " formulae installed",
-                                        count: "\(brewData.installedFormulae.count)",
-                                        mainText: "Formulae are packages that are used via terminal"
-                                    )
-                                    .animation(.none, value: brewData.installedFormulae.count)
-                                    
-                                    Divider()
-                                    
-                                    GroupBoxHeadlineGroup(
-                                        image: "text.and.command.macwindow",
-                                        title1: "You have ",
-                                        title2: " \(brewData.installedCasks.count == 1 ? "cask" : "casks") installed",
-                                        count: "\(brewData.installedCasks.count)",
-                                        mainText: "Casks are packages that have graphical windows"
-                                    )
-                                    .animation(.none, value: brewData.installedCasks.count)
-                                    
-                                    Divider()
-                                    
-                                    GroupBoxHeadlineGroup(
-                                        image: "spigot",
-                                        title1: "You have ",
-                                        title2: " \(availableTaps.addedTaps.count == 1 ? "tap" : "taps") added",
-                                        count: "\(availableTaps.addedTaps.count)",
-                                        mainText: "Taps provide additional packages via 3rd party repositories"
-                                    )
-                                    .animation(.none, value: availableTaps.addedTaps.count)
-                                }
+//                                VStack(alignment: .leading)
+//                                {
+//                                    GroupBoxHeadlineGroup(
+//                                        image: "terminal",
+//                                        title1: "You have ",
+//                                        title2: " formulae installed",
+//                                        count: "\(brewData.installedFormulae.count)",
+//                                        mainText: "Formulae are packages that are used via terminal"
+//                                    )
+//                                    .animation(.none, value: brewData.installedFormulae.count)
+//
+//                                    Divider()
+//
+//                                    GroupBoxHeadlineGroup(
+//                                        image: "text.and.command.macwindow",
+//                                        title1: "You have ",
+//                                        title2: " \(brewData.installedCasks.count == 1 ? "cask" : "casks") installed",
+//                                        count: "\(brewData.installedCasks.count)",
+//                                        mainText: "Casks are packages that have graphical windows"
+//                                    )
+//                                    .animation(.none, value: brewData.installedCasks.count)
+//
+//                                    Divider()
+//
+//                                    GroupBoxHeadlineGroup(
+//                                        image: "spigot",
+//                                        title1: "You have ",
+//                                        title2: " \(availableTaps.addedTaps.count == 1 ? "tap" : "taps") added",
+//                                        count: "\(availableTaps.addedTaps.count)",
+//                                        mainText: "Taps provide additional packages via 3rd party repositories"
+//                                    )
+//                                    .animation(.none, value: availableTaps.addedTaps.count)
+//                                }
                             }
                             
                             if upgradeablePackages.count >= 0 // Changed from != to show the section always
@@ -118,13 +118,13 @@ struct StartPage: View
                                     {
                                         HStack
                                         {
-                                            GroupBoxHeadlineGroup(
-                                                image: "clock.arrow.circlepath",
-                                                title1: "You have ",
-                                                title2: " outdated \(upgradeablePackages.count == 1 ? "package" : "packages")",
-                                                count: "\(upgradeablePackages.count)",
-                                                mainText: "This shows out of date packages that should be updated"
-                                            )
+//                                            GroupBoxHeadlineGroup(
+//                                                image: "clock.arrow.circlepath",
+//                                                title1: "You have ",
+//                                                title2: " outdated \(upgradeablePackages.count == 1 ? "package" : "packages")",
+//                                                count: "\(upgradeablePackages.count)",
+//                                                mainText: "This shows out of date packages that should be updated"
+//                                            )
                                             
                                             Spacer()
                                             
@@ -132,7 +132,7 @@ struct StartPage: View
                                             {
                                                 Button
                                                 {
-                                                    updateBrewPackages(updateProgressTracker, appState: appState)
+                                                    upgradeBrewPackages(updateProgressTracker, appState: appState)
                                                 } label: {
                                                     Image(systemName: "arrow.down.app")
                                                         .resizable()
@@ -183,13 +183,13 @@ struct StartPage: View
                                     {
                                         HStack
                                         {
-                                            GroupBoxHeadlineGroup(
-                                                image: "square.and.arrow.down.on.square",
-                                                title1: "You have ",
-                                                title2: " of cached downloads",
-                                                count: "\(appState.cachedDownloadsFolderSize.convertDirectorySizeToPresentableFormat(size: appState.cachedDownloadsFolderSize))",
-                                                mainText: "Leftovers from completed package installations. They're safe to remove."
-                                            )
+//                                            GroupBoxHeadlineGroup(
+//                                                image: "square.and.arrow.down.on.square",
+//                                                title1: "You have ",
+//                                                title2: " of cached downloads",
+//                                                count: "\(appState.cachedDownloadsFolderSize.convertDirectorySizeToPresentableFormat(size: appState.cachedDownloadsFolderSize))",
+//                                                mainText: "Leftovers from completed package installations. They're safe to remove."
+//                                            )
                                             
                                             Spacer()
                                             
@@ -219,14 +219,14 @@ struct StartPage: View
                             {
                                 VStack(alignment: .leading)
                                 {
-                                    let analyticsStatus = allowBrewAnalytics ? "ENABLED" : "DISABLED"
-                                    GroupBoxHeadlineGroupAnalytics(
-                                        image: "chart.bar",
-                                        title: "Homebrew analytics are ",
-                                        status: analyticsStatus,
-                                        mainText: "\(allowBrewAnalytics ? "Homebrew is collecting various anonymized data, such as which packages you have installed" : "Homebrew is not collecting any data about how you use it")"
-                                    )
-                                    .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
+//                                    let analyticsStatus = allowBrewAnalytics ? "ENABLED" : "DISABLED"
+//                                    GroupBoxHeadlineGroupAnalytics(
+//                                        image: "chart.bar",
+//                                        title: "Homebrew analytics are ",
+//                                        status: analyticsStatus,
+//                                        mainText: "\(allowBrewAnalytics ? "Homebrew is collecting various anonymized data, such as which packages you have installed" : "Homebrew is not collecting any data about how you use it")"
+//                                    )
+//                                    .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
                                 }
                             }
                             

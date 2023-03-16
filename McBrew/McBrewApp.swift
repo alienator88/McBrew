@@ -47,6 +47,7 @@ struct McBrewApp: App
                 } label: {
                     Text("About \(NSApplication.appName!)")
                 }
+                .keyboardShortcut("i")
             }
 
             CommandGroup(after: .sidebar)
@@ -66,7 +67,7 @@ struct McBrewApp: App
                 {
                     appState.isShowingInstallationSheet.toggle()
                 } label: {
-                    Text("Install Packages…")
+                    Text("Install Packages")
                 }
                 .keyboardShortcut("n")
 
@@ -74,7 +75,7 @@ struct McBrewApp: App
                 {
                     appState.isShowingAddTapSheet.toggle()
                 } label: {
-                    Text("Add a Tap…")
+                    Text("Add a Tap")
                 }
                 .keyboardShortcut("n", modifiers: [.command, .option])
 
@@ -82,7 +83,7 @@ struct McBrewApp: App
 
                 Button
                 {
-                    updateBrewPackages(updateProgressTracker, appState: appState)
+                    upgradeBrewPackages(updateProgressTracker, appState: appState)
                 } label: {
                     Text("Update Packages")
                 }
@@ -102,9 +103,17 @@ struct McBrewApp: App
             {
                 Button
                 {
+                    updateBrewApp(updateProgressTracker, appState: appState)
+                } label: {
+                    Text("Update Homebrew")
+                }
+                .keyboardShortcut("h")
+                
+                Button
+                {
                     appState.isShowingMaintenanceSheet.toggle()
                 } label: {
-                    Text("Perform Maintenance…")
+                    Text("Perform Maintenance")
                 }
                 .keyboardShortcut("m")
                 

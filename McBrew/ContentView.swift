@@ -77,7 +77,7 @@ struct ContentView: View
                     
                     Button
                     {
-                        upgradeBrewApp(updateProgressTracker, appState: appState)
+                        updateBrewApp(updateProgressTracker, appState: appState)
                     } label: {
                         Label
                         {
@@ -92,7 +92,7 @@ struct ContentView: View
                     
                     Button
                     {
-                        updateBrewPackages(updateProgressTracker, appState: appState)
+                        upgradeBrewPackages(updateProgressTracker, appState: appState)
                     } label: {
                         Label
                         {
@@ -134,6 +134,7 @@ struct ContentView: View
                 brewData.installedCasks = await loadUpCasks(appState: appState, sortBy: sortPackagesBy)
                 availableTaps.addedTaps = await loadUpTappedTaps()
                 _ = await runHealthCheck(appState: appState)
+                _ = await getBrewVersion(appState: appState)
                 
                 if await analyticsQueryCommand.standardOutput.contains("Analytics are enabled")
                 {

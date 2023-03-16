@@ -9,64 +9,60 @@ import SwiftUI
 
 struct GroupBoxHeadlineGroup: View
 {
-    var image: String?
-    let title1: String
-    let title2: String
-    let count: String
+    @Environment(\.colorScheme) var colorScheme
+    let title: String
     let mainText: String
     
     var body: some View
     {
         HStack(spacing: 15)
         {
-            if let image
-            {
-                Image(systemName: image)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 26, height: 26)
-            }
             
             VStack(alignment: .center, spacing: 2)
             {
+                
                 HStack(spacing: 0) {
-                    Text(title1)
-                    Text(count).bold()
-                    Text(title2)
+                    Text(title)
                 }
+                
+                
                 Text(mainText)
                     .font(.subheadline)
                     .foregroundColor(.secondary)
             }
+            
         }
         .padding(10)
+        .foregroundStyle(colorScheme == .dark ?
+                         LinearGradient(
+                            colors: [.blue, .purple],
+                            startPoint: .leading,
+                            endPoint: .trailing
+                         )
+                         : LinearGradient(
+                            colors: [Color("drop")],
+                            startPoint: .leading,
+                            endPoint: .trailing
+                         )
+        )
     }
 }
 
 struct GroupBoxHeadlineGroupAnalytics: View
 {
-    var image: String?
+    @Environment(\.colorScheme) var colorScheme
     let title: String
-    let status: String
     let mainText: String
     
     var body: some View
     {
         HStack(spacing: 15)
         {
-            if let image
-            {
-                Image(systemName: image)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 26, height: 26)
-            }
             
             VStack(alignment: .center, spacing: 2)
             {
                 HStack(spacing: 0) {
                     Text(title)
-                    Text(status).bold()
                 }
                 Text(mainText)
                     .font(.subheadline)
@@ -74,6 +70,18 @@ struct GroupBoxHeadlineGroupAnalytics: View
             }
         }
         .padding(10)
+        .foregroundStyle(colorScheme == .dark ?
+                         LinearGradient(
+                            colors: [.blue, .purple],
+                            startPoint: .leading,
+                            endPoint: .trailing
+                         )
+                         : LinearGradient(
+                            colors: [Color("drop")],
+                            startPoint: .leading,
+                            endPoint: .trailing
+                         )
+        )
     }
 }
 
@@ -98,13 +106,13 @@ struct GroupBoxHeadlineGroupPaths: View
     let c2: String
     let d1: String
     let d2: String
-        
+    
     var body: some View
     {
-                
+        
         HStack(spacing: 15)
         {
-
+            
             if let image
             {
                 Image(systemName: image)
@@ -123,7 +131,7 @@ struct GroupBoxHeadlineGroupPaths: View
                     .foregroundColor(.secondary)
             }
             
-
+            
         }
         .padding(10)
         
@@ -170,7 +178,7 @@ struct GroupBoxHeadlineGroupPaths: View
                         }
                     }
                 }
-
+                
             }
             .frame(height: 140)
             

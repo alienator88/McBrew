@@ -17,8 +17,8 @@ func runHealthCheck(appState: AppState) async
     Task {
         do
         {
-            let healthCheckOutput = try await performBrewHealthCheck()
-            print("Health check output: \(healthCheckOutput)")
+            _ = try await performBrewHealthCheck() // let healthCheckOutput removed since I wasn't using the data
+            //            print("Health check output: \(healthCheckOutput)")
             appState.isHealthCheckGood = true
             
         }
@@ -28,7 +28,7 @@ func runHealthCheck(appState: AppState) async
             appState.isHealthCheckGood = false
         }
     }
-
+    
     appState.isRunningHealthCheck = false
     
     

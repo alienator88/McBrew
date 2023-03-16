@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 @MainActor
-func updateBrewPackages(_ updateProgressTracker: UpdateProgressTracker, appState: AppState)
+func upgradeBrewPackages(_ updateProgressTracker: UpdateProgressTracker, appState: AppState)
 {
     Task
     {
@@ -18,7 +18,7 @@ func updateBrewPackages(_ updateProgressTracker: UpdateProgressTracker, appState
         appState.isShowingUpdateSheet = true
         updateProgressTracker.updateStage = .updating
         updateProgressTracker.updateProgress += 0.2
-        let updateResult = await shell(AppConstants.brewExecutablePath.absoluteString, ["update"]).standardOutput
+        let updateResult = await shell(AppConstants.brewExecutablePath.absoluteString, ["upgrade"]).standardOutput
         updateProgressTracker.updateProgress += 0.3
         
         print("Update packages result: \(updateResult)")
@@ -35,7 +35,7 @@ func updateBrewPackages(_ updateProgressTracker: UpdateProgressTracker, appState
 }
 
 @MainActor
-func upgradeBrewApp(_ updateProgressTracker: UpdateProgressTracker, appState: AppState)
+func updateBrewApp(_ updateProgressTracker: UpdateProgressTracker, appState: AppState)
 {
     Task
     {
@@ -45,7 +45,7 @@ func upgradeBrewApp(_ updateProgressTracker: UpdateProgressTracker, appState: Ap
 
         updateProgressTracker.updateStage = .upgrading
         updateProgressTracker.updateProgress += 0.2
-        let upgradeResult = await shell(AppConstants.brewExecutablePath.absoluteString, ["upgrade"]).standardOutput
+        let upgradeResult = await shell(AppConstants.brewExecutablePath.absoluteString, ["update"]).standardOutput
         updateProgressTracker.updateProgress += 0.3
         
         print("Upgrade homebrew result: \(upgradeResult)")

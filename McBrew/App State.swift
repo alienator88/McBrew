@@ -25,6 +25,9 @@ class AppState: ObservableObject {
     @Published var isLoadingCasks: Bool = true
     @Published var isRunningHealthCheck: Bool = true
     @Published var isHealthCheckGood: Bool = true
+    @Published var isGettingHomebrewVersion: Bool = true
     
     @Published var cachedDownloadsFolderSize: Int64 = directorySize(url: AppConstants.brewCachedDownloadsPath)
+    
+    @Published var homebrewVersion: String = ""
 }
