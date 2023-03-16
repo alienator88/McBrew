@@ -5,6 +5,19 @@
 A fast GUI for Homebrew written in SwiftUI. This is my personal spin on the awesome version from [buresdv](https://github.com/buresdv/Cork).
 Adding in features and redesigning the look to fit more of my needs. Also using this as a learning opportunity for Swift as I'm new to it.
 
+## Changes from the fork
+- Revamped dashboard
+- Button to go back to dashboard
+- Split out some of the toolbar buttons to upgrade brew and packages independently if desired
+- Analytics toggle on card
+- Brew version on dash
+- Brew health on dash
+- Package/tap icons
+- Show formulae/cask/tap count in sidebar and menu bar
+- This fork leans more towards UI changes rather than functionality
+
+
+
 ## Screenshots
 
 ### Dashboard
