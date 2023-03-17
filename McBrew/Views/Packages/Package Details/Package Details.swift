@@ -351,8 +351,17 @@ struct PackageDetailView: View
                                     await pinAndUnpinPackage(package: package, pinned: pinned)
                                 }
                             } label: {
-                                Text(pinned ? "Unpin v\(package.versions.joined())" : "Pin v\(package.versions.joined())")
+                                Image(systemName: pinned ? "pin.slash" : "pin")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 18.0, height: 18.0)
+                                    .padding(.trailing, 5)
+                                    .padding(.top, 2)
+                                Text(pinned ? "v\(package.versions.joined())" : "v\(package.versions.joined())")
                             }
+                            .controlSize(.large)
+                            .help(pinned ? "Unpin the version" : "Pin the version")
+
                         }
                         
                         Spacer()
@@ -368,8 +377,16 @@ struct PackageDetailView: View
                                     try await uninstallSelectedPackage(package: package, brewData: brewData, appState: appState)
                                 }
                             } label: {
-                                Text("Uninstall \(package.isCask ? "Cask" : "Formula")") // If the package is cask, show "Uninstall Cask". If it's not, show "Uninstall Formula"
+                                Image(systemName: "trash")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 18.0, height: 18.0)
+//                                    .padding()
+//                                Text("\(package.isCask ? "Cask" : "Formula")") // If the package is cask, show "Uninstall Cask". If it's not, show "Uninstall Formula"
                             }
+                            .controlSize(.large)
+                            .help("Uninstall \(package.name)")
+
                         }
                     }
                 }

@@ -26,7 +26,6 @@
 		632FD2972995A7E50029FC49 /* Nicer Text Editor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632FD2962995A7E50029FC49 /* Nicer Text Editor.swift */; };
 		632FD2992995BF490029FC49 /* Load up Tapped Taps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632FD2982995BF490029FC49 /* Load up Tapped Taps.swift */; };
 		632FD29B2995C1C20029FC49 /* BrewTap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632FD29A2995C1C20029FC49 /* BrewTap.swift */; };
-		6330531929966E9F00F34F94 /* Start Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6330531829966E9F00F34F94 /* Start Page.swift */; };
 		6330531B2996A16600F34F94 /* GroupBox Headline Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6330531A2996A16600F34F94 /* GroupBox Headline Group.swift */; };
 		633289E729A68A61004B2930 /* Package Installation Steps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633289E629A68A61004B2930 /* Package Installation Steps.swift */; };
 		633289E929A68A8A004B2930 /* Package Installation Stage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633289E829A68A8A004B2930 /* Package Installation Stage.swift */; };
@@ -131,7 +130,6 @@
 		632FD2962995A7E50029FC49 /* Nicer Text Editor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Nicer Text Editor.swift"; sourceTree = "<group>"; };
 		632FD2982995BF490029FC49 /* Load up Tapped Taps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Load up Tapped Taps.swift"; sourceTree = "<group>"; };
 		632FD29A2995C1C20029FC49 /* BrewTap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrewTap.swift; sourceTree = "<group>"; };
-		6330531829966E9F00F34F94 /* Start Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Start Page.swift"; sourceTree = "<group>"; };
 		6330531A2996A16600F34F94 /* GroupBox Headline Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GroupBox Headline Group.swift"; sourceTree = "<group>"; };
 		633289E629A68A61004B2930 /* Package Installation Steps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Package Installation Steps.swift"; sourceTree = "<group>"; };
 		633289E829A68A8A004B2930 /* Package Installation Stage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Package Installation Stage.swift"; sourceTree = "<group>"; };
@@ -298,7 +296,6 @@
 		6330531729966E9200F34F94 /* Start Page */ = {
 			isa = PBXGroup;
 			children = (
-				6330531829966E9F00F34F94 /* Start Page.swift */,
 				C72BEA6929C23B8A00A23D3C /* StartDash.swift */,
 			);
 			path = "Start Page";
@@ -807,7 +804,6 @@
 				63006E0629ACC56800243E29 /* Get Package Description.swift in Sources */,
 				6371EA2D287202F400300E1B /* Extract from JSON.swift in Sources */,
 				63C830BC29984B1A002D11BB /* Used Package.swift in Sources */,
-				6330531929966E9F00F34F94 /* Start Page.swift in Sources */,
 				6382C900299D71A300354B19 /* Sort by Install Date.swift in Sources */,
 				63006E0029AC073D00243E29 /* Parse JSON.swift in Sources */,
 				63C830BE29984B49002D11BB /* Acknowledged Contributor.swift in Sources */,
