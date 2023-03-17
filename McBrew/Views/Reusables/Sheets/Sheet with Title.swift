@@ -15,13 +15,13 @@ struct SheetWithTitle<Content: View>: View
 
     var body: some View
     {
-        VStack(alignment: .leading)
+        VStack(alignment: .center)
         {
             Text(title)
-                .font(.headline)
+                .font(.title2)
 
             sheetContent
         }
-        .frame(minWidth: 300)
+        .frame(minWidth: 250)
     }
 }

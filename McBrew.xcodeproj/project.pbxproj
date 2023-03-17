@@ -108,9 +108,7 @@
 		C72BEA6A29C23B8A00A23D3C /* StartDash.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72BEA6929C23B8A00A23D3C /* StartDash.swift */; };
 		C72BEA6C29C268F200A23D3C /* getBrewVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72BEA6B29C268F200A23D3C /* getBrewVersion.swift */; };
 		C7AFAF0229C0253700F8AAE2 /* DropTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7AFAF0129C0253700F8AAE2 /* DropTarget.swift */; };
-		C7AFAF0429C0255C00F8AAE2 /* Dump.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7AFAF0329C0255C00F8AAE2 /* Dump.swift */; };
 		C7AFAF0629C0298800F8AAE2 /* DropFile Pane.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7AFAF0529C0298800F8AAE2 /* DropFile Pane.swift */; };
-		C7E356C629BFD2AD00F5B2DD /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E356C529BFD2AD00F5B2DD /* Bundle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -215,9 +213,7 @@
 		C72BEA6929C23B8A00A23D3C /* StartDash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartDash.swift; sourceTree = "<group>"; };
 		C72BEA6B29C268F200A23D3C /* getBrewVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = getBrewVersion.swift; sourceTree = "<group>"; };
 		C7AFAF0129C0253700F8AAE2 /* DropTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropTarget.swift; sourceTree = "<group>"; };
-		C7AFAF0329C0255C00F8AAE2 /* Dump.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dump.swift; sourceTree = "<group>"; };
 		C7AFAF0529C0298800F8AAE2 /* DropFile Pane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DropFile Pane.swift"; sourceTree = "<group>"; };
-		C7E356C529BFD2AD00F5B2DD /* Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -356,7 +352,6 @@
 		634065762871AB2A001A2178 /* Logic */ = {
 			isa = PBXGroup;
 			children = (
-				C7E356C429BFD28B00F5B2DD /* Bundle */,
 				63006E0329ACC54900243E29 /* JSON */,
 				6382C8FC299D70E300354B19 /* Sorting */,
 				63D51F6F299ABA5100203F3F /* Maintenance */,
@@ -674,17 +669,8 @@
 			isa = PBXGroup;
 			children = (
 				C7AFAF0129C0253700F8AAE2 /* DropTarget.swift */,
-				C7AFAF0329C0255C00F8AAE2 /* Dump.swift */,
 			);
 			path = DumpBundle;
-			sourceTree = "<group>";
-		};
-		C7E356C429BFD28B00F5B2DD /* Bundle */ = {
-			isa = PBXGroup;
-			children = (
-				C7E356C529BFD2AD00F5B2DD /* Bundle.swift */,
-			);
-			path = Bundle;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -791,7 +777,6 @@
 				6340657A2871AC27001A2178 /* Brew Data Storage.swift in Sources */,
 				C72BEA6A29C23B8A00A23D3C /* StartDash.swift in Sources */,
 				633289E729A68A61004B2930 /* Package Installation Steps.swift in Sources */,
-				C7AFAF0429C0255C00F8AAE2 /* Dump.swift in Sources */,
 				63D51F6B299A9AC500203F3F /* Settings Pane Template.swift in Sources */,
 				63006E0829ACC60F00243E29 /* Get Package Homepage.swift in Sources */,
 				63C830C129984BA4002D11BB /* Button That Opens Websites.swift in Sources */,
@@ -811,7 +796,6 @@
 				632FD292299596790029FC49 /* HelpButton.swift in Sources */,
 				63D8310A299982EA00FA802F /* Search Result Row.swift in Sources */,
 				63A8746E29904A7F009F9533 /* App State.swift in Sources */,
-				C7E356C629BFD2AD00F5B2DD /* Bundle.swift in Sources */,
 				63A87468298FE811009F9533 /* Package Types.swift in Sources */,
 				63006E1129ACCCB800243E29 /* Get If Package Was Installed as Dependency.swift in Sources */,
 				63199FE029980AB9002F50F0 /* Load up Installed Packages.swift in Sources */,
@@ -997,7 +981,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 16;
+				CURRENT_PROJECT_VERSION = 18;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = BK8443AXLU;
@@ -1012,7 +996,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 0.1.9;
+				MARKETING_VERSION = 0.2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.alienator88.McBrew;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1031,7 +1015,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 16;
+				CURRENT_PROJECT_VERSION = 18;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = BK8443AXLU;
@@ -1046,7 +1030,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 0.1.9;
+				MARKETING_VERSION = 0.2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.alienator88.McBrew;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

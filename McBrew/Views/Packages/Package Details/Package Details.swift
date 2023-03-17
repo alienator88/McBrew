@@ -16,6 +16,7 @@ class SelectedPackageInfo: ObservableObject
 struct PackageDetailView: View
 {
     @AppStorage("caveatDisplayOptions") var caveatDisplayOptions: PackageCaveatDisplay = .full
+    @AppStorage("caveatDisplayOptionsBool") var caveatDisplayOptionsBool: Bool = true
     
     @State var package: BrewPackage
     
@@ -96,7 +97,7 @@ struct PackageDetailView: View
                         {
                             if !caveats.isEmpty
                             {
-                                if caveatDisplayOptions == .mini
+                                if !caveatDisplayOptionsBool //== .mini
                                 {
                                     OutlinedPillText(text: "Has caveats 􀅴", color: .indigo)
                                         .onTapGesture
@@ -164,7 +165,7 @@ struct PackageDetailView: View
                     {
                         if !caveats.isEmpty
                         {
-                            if caveatDisplayOptions == .full
+                            if caveatDisplayOptionsBool //== .full
                             {
                                 GroupBox
                                 {

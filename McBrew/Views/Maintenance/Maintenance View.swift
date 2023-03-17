@@ -20,30 +20,30 @@ enum MaintenanceSteps
 struct MaintenanceView: View
 {
     @Binding var isShowingSheet: Bool
-
+    
     @EnvironmentObject var brewData: BrewDataStorage
     @EnvironmentObject var appState: AppState
     @EnvironmentObject var updateProgressTracker: UpdateProgressTracker
-
-
+    
+    
     @State var maintenanceSteps: MaintenanceSteps = .ready
-
+    
     @State var currentMaintenanceStepText: String = "Firing up..."
-
+    
     @State var shouldPurgeCache: Bool = true
     @State var shouldDeleteDownloads: Bool = true
     @State var shouldUninstallOrphans: Bool = true
     @State var shouldPerformHealthCheck: Bool = false
-
+    
     @State var numberOfOrphansRemoved: Int = 0
-
+    
     @State var cachePurgingSkippedPackagesDueToMostRecentVersionsNotBeingInstalled: Bool = false
     @State var packagesHoldingBackCachePurgeTracker: [String] = .init()
     
     @State var brewHealthCheckFoundNoProblems: Bool = false
-
+    
     @State var maintenanceFoundNoProblems: Bool = true
-
+    
     @State var reclaimedSpaceAfterCachePurge: Int64 = 0
     
     @State var forcedOptions: Bool? = false
@@ -55,236 +55,249 @@ struct MaintenanceView: View
             switch maintenanceSteps
             {
             case .ready:
-                SheetWithTitle(title: "Maintenance")
+                SheetWithTitle(title: "Maintenance Options")
                 {
                     MaintenanceReadyView(shouldUninstallOrphans: $shouldUninstallOrphans, shouldPurgeCache: $shouldPurgeCache, shouldDeleteDownloads: $shouldDeleteDownloads, shouldPerformHealthCheck: $shouldPerformHealthCheck, isShowingSheet: $isShowingSheet, maintenanceSteps: $maintenanceSteps, isShowingControlButtons: true, forcedOptions: forcedOptions!)
                 }
                 .padding()
-
+                
             case .maintenanceRunning:
                 ProgressView
                 {
                     Text(currentMaintenanceStepText)
                         .onAppear
-                        {
-                            Task
-                            {
-                                if shouldUninstallOrphans
-                                {
-                                    currentMaintenanceStepText = "Uninstalling Orphans..."
-
-                                    do
-                                    {
-                                        let orphanUninstallationOutput = try await uninstallOrphanedPackages()
-
-                                        print("Orphan removal output: \(orphanUninstallationOutput)")
-
-                                        let numberOfUninstalledOrphansRegex: String = "(?<=Autoremoving ).*?(?= unneeded)"
-
-                                        numberOfOrphansRemoved = Int(try regexMatch(from: orphanUninstallationOutput.standardOutput, regex: numberOfUninstalledOrphansRegex)) ?? 0
-                                    }
-                                    catch let orphanUninstallatioError as NSError
-                                    {
-                                        print(orphanUninstallatioError)
-                                    }
-                                }
-                                else
-                                {
-                                    print("Will not uninstall orphans")
-                                }
-
-                                if shouldPurgeCache
-                                {
-                                    currentMaintenanceStepText = "Purging Cache..."
-
-                                    let cachePurgeOutput = try await purgeBrewCache()
-                                    print("Cache purge output: \(cachePurgeOutput)")
-
-                                    if cachePurgeOutput.standardError.contains("Warning: Skipping")
-                                    { // Here, we'll write out all the packages that are blocking updating
-                                        var packagesHoldingBackCachePurgeInitialArray = cachePurgeOutput.standardError.components(separatedBy: "Warning:") // The output has these packages in one giant list. Split them into an array so we can iterate over them and extract their names
-                                        // I can't just try to regex-match on the raw output, because it will only match the first package in that case
-
-                                        packagesHoldingBackCachePurgeInitialArray.removeFirst() // The first element in this array is "" for some reason, remove that so we save some resources
-
-                                        for blockingPackageRaw in packagesHoldingBackCachePurgeInitialArray
-                                        {
-                                            print("Blocking package: \(blockingPackageRaw)")
-
-                                            let packageHoldingBackCachePurgeNameRegex = "(?<=Skipping ).*?(?=:)"
-
-                                            let packageHoldingBackCachePurgeName = try regexMatch(from: blockingPackageRaw, regex: packageHoldingBackCachePurgeNameRegex)
-
-                                            packagesHoldingBackCachePurgeTracker.append(packageHoldingBackCachePurgeName)
-                                        }
-
-                                        print("These packages are holding back cache purge: \(packagesHoldingBackCachePurgeTracker)")
-
-                                        cachePurgingSkippedPackagesDueToMostRecentVersionsNotBeingInstalled = true
-                                    }
-                                }
-                                else
-                                {
-                                    print("Will not purge cache")
-                                }
-
-                                if shouldDeleteDownloads
-                                {
-                                    print("Will delete downloads")
-                                    
-                                    currentMaintenanceStepText = "Deleting cached downloads..."
-                                    
-                                    deleteCachedDownloads()
-                                    
-                                    /// I have to assign the original value of the appState variable to a different variable, because when it updates at the end of the process, I don't want it to update in the result overview
-                                    reclaimedSpaceAfterCachePurge = appState.cachedDownloadsFolderSize
-                                }
-                                else
-                                {
-                                    print("Will not delete downloads")
-                                }
-
-                                if shouldPerformHealthCheck
-                                {
-                                    currentMaintenanceStepText = "Running Health Check..."
-
-                                    do
-                                    {
-                                        let healthCheckOutput = try await performBrewHealthCheck()
-                                        print("Health check output: \(healthCheckOutput)")
-
-                                        brewHealthCheckFoundNoProblems = true
-                                    }
-                                    catch let healthCheckError as NSError
-                                    {
-                                        print(healthCheckError)
-                                    }
-                                }
-                                else
-                                {
-                                    print("Will not perform health check")
-                                }
-
-                                maintenanceSteps = .finished
-                            }
-                        }
-                }
-                .padding()
-                .frame(width: 200)
-
-            case .finished:
-                ComplexWithIcon(systemName: "checkmark.shield.fill")
-                {
-                    VStack(alignment: .center)
                     {
-                        VStack(alignment: .leading, spacing: 5)
+                        Task
                         {
-                            Text("Maintenance - Done")
-                                .font(.headline)
-
                             if shouldUninstallOrphans
                             {
-                                if numberOfOrphansRemoved == 0
+                                currentMaintenanceStepText = "Uninstalling Orphans..."
+                                
+                                do
                                 {
-                                    HStack{
-                                        Text("No orphaned packages found")
-                                        Image(systemName: "checkmark")
-                                    }
+                                    let orphanUninstallationOutput = try await uninstallOrphanedPackages()
+                                    
+                                    print("Orphan removal output: \(orphanUninstallationOutput)")
+                                    
+                                    let numberOfUninstalledOrphansRegex: String = "(?<=Autoremoving ).*?(?= unneeded)"
+                                    
+                                    numberOfOrphansRemoved = Int(try regexMatch(from: orphanUninstallationOutput.standardOutput, regex: numberOfUninstalledOrphansRegex)) ?? 0
                                 }
-                                else
+                                catch let orphanUninstallatioError as NSError
                                 {
-                                    HStack{
-                                        Text("\(numberOfOrphansRemoved) orphaned packages removed")
-                                        Image(systemName: "checkmark")
-                                    }
+                                    print(orphanUninstallatioError)
                                 }
                             }
-
+                            else
+                            {
+                                print("Will not uninstall orphans")
+                            }
+                            
                             if shouldPurgeCache
                             {
-                                VStack(alignment: .leading)
-                                {
-                                    HStack{
-                                        Text("Package cache purged")
-                                        Image(systemName: "checkmark")
-                                    }
-
-                                    if cachePurgingSkippedPackagesDueToMostRecentVersionsNotBeingInstalled
+                                currentMaintenanceStepText = "Purging Cache..."
+                                
+                                let cachePurgeOutput = try await purgeBrewCache()
+                                print("Cache purge output: \(cachePurgeOutput)")
+                                
+                                if cachePurgeOutput.standardError.contains("Warning: Skipping")
+                                { // Here, we'll write out all the packages that are blocking updating
+                                    var packagesHoldingBackCachePurgeInitialArray = cachePurgeOutput.standardError.components(separatedBy: "Warning:") // The output has these packages in one giant list. Split them into an array so we can iterate over them and extract their names
+                                    // I can't just try to regex-match on the raw output, because it will only match the first package in that case
+                                    
+                                    packagesHoldingBackCachePurgeInitialArray.removeFirst() // The first element in this array is "" for some reason, remove that so we save some resources
+                                    
+                                    for blockingPackageRaw in packagesHoldingBackCachePurgeInitialArray
                                     {
-                                        Text("Some package caches weren't purged because they were held back by \(packagesHoldingBackCachePurgeTracker.joined(separator: ", ")) not being updated")
-                                            .font(.caption)
-                                            .foregroundColor(Color(nsColor: NSColor.systemGray))
+                                        print("Blocking package: \(blockingPackageRaw)")
+                                        
+                                        let packageHoldingBackCachePurgeNameRegex = "(?<=Skipping ).*?(?=:)"
+                                        
+                                        let packageHoldingBackCachePurgeName = try regexMatch(from: blockingPackageRaw, regex: packageHoldingBackCachePurgeNameRegex)
+                                        
+                                        packagesHoldingBackCachePurgeTracker.append(packageHoldingBackCachePurgeName)
                                     }
+                                    
+                                    print("These packages are holding back cache purge: \(packagesHoldingBackCachePurgeTracker)")
+                                    
+                                    cachePurgingSkippedPackagesDueToMostRecentVersionsNotBeingInstalled = true
                                 }
+                            }
+                            else
+                            {
+                                print("Will not purge cache")
                             }
                             
                             if shouldDeleteDownloads
                             {
-                                VStack(alignment: .leading) {
-                                    HStack{
-                                        Text("Cached downloads deleted")
-                                        Image(systemName: "checkmark")
-                                    }
-                                    Text("You reclaimed \(convertDirectorySizeToPresentableFormat(size: reclaimedSpaceAfterCachePurge))")
-                                        .font(.caption)
-                                        .foregroundColor(Color(nsColor: NSColor.systemGray))
-                                    
-                                }
+                                print("Will delete downloads")
+                                
+                                currentMaintenanceStepText = "Deleting cached downloads..."
+                                
+                                deleteCachedDownloads()
+                                
+                                /// I have to assign the original value of the appState variable to a different variable, because when it updates at the end of the process, I don't want it to update in the result overview
+                                reclaimedSpaceAfterCachePurge = appState.cachedDownloadsFolderSize
                             }
-
+                            else
+                            {
+                                print("Will not delete downloads")
+                            }
+                            
                             if shouldPerformHealthCheck
                             {
-                                if brewHealthCheckFoundNoProblems
+                                currentMaintenanceStepText = "Running Health Check..."
+                                
+                                do
                                 {
-                                    HStack{
-                                        Text("No problems with Homebrew")
-                                        Image(systemName: "checkmark")
+                                    let healthCheckOutput = try await performBrewHealthCheck()
+                                    print("Health check output: \(healthCheckOutput)")
+                                    
+                                    brewHealthCheckFoundNoProblems = true
+                                }
+                                catch let healthCheckError as NSError
+                                {
+                                    print(healthCheckError)
+                                }
+                            }
+                            else
+                            {
+                                print("Will not perform health check")
+                            }
+                            
+                            maintenanceSteps = .finished
+                        }
+                    }
+                }
+                .padding()
+                .frame(width: 200)
+                
+            case .finished:
+                VStack{
+                    Text("Maintenance")
+                        .font(.title2)
+                        .padding(.top)
+                    ComplexWithIcon(systemName: "checkmark.circle")
+                    {
+                        VStack(alignment: .center)
+                        {
+                            VStack(alignment: .leading, spacing: 5)
+                            {
+//                                Text("Maintenance - Done")
+//                                    .font(.title2)
+                                
+                                if shouldUninstallOrphans
+                                {
+                                    if numberOfOrphansRemoved == 0
+                                    {
+                                        HStack{
+                                            Text("No orphaned packages")
+                                            Spacer()
+                                            Image(systemName: "checkmark")
+                                        }
+                                    }
+                                    else
+                                    {
+                                        HStack{
+                                            Text("\(numberOfOrphansRemoved) orphaned packages removed")
+                                            Spacer()
+                                            Image(systemName: "checkmark")
+                                        }
                                     }
                                 }
-                                else
+                                
+                                if shouldPurgeCache
                                 {
-                                    HStack{
-                                        Text("Found some problems with Homebrew")
-                                            .onAppear
+                                    VStack(alignment: .leading)
+                                    {
+                                        HStack{
+                                            Text("Package cache purged")
+                                            Spacer()
+                                            Image(systemName: "checkmark")
+                                        }
+                                        
+                                        if cachePurgingSkippedPackagesDueToMostRecentVersionsNotBeingInstalled
+                                        {
+                                            Text("Some package caches weren't purged because they were held back by \(packagesHoldingBackCachePurgeTracker.joined(separator: ", ")) not being updated")
+                                                .font(.caption)
+                                                .foregroundColor(Color(nsColor: NSColor.systemGray))
+                                        }
+                                    }
+                                }
+                                
+                                if shouldDeleteDownloads
+                                {
+                                    VStack(alignment: .leading) {
+                                        HStack{
+                                            Text("Cached downloads purged")
+                                            Spacer()
+                                            Image(systemName: "checkmark")
+                                        }
+                                        Text("You reclaimed \(convertDirectorySizeToPresentableFormat(size: reclaimedSpaceAfterCachePurge))")
+                                            .font(.caption)
+                                            .foregroundColor(Color(nsColor: NSColor.systemGray))
+                                        
+                                    }
+                                }
+                                
+                                if shouldPerformHealthCheck
+                                {
+                                    if brewHealthCheckFoundNoProblems
+                                    {
+                                        HStack{
+                                            Text("No problems with Homebrew")
+                                            Spacer()
+                                            Image(systemName: "checkmark")
+                                        }
+                                    }
+                                    else
+                                    {
+                                        HStack{
+                                            Text("Found some problems with Homebrew")
+                                                .onAppear
                                             {
                                                 maintenanceFoundNoProblems = false
                                             }
-                                        Image(systemName: "exclamationmark.octagon")
+                                            Spacer()
+                                            Image(systemName: "exclamationmark.octagon")
+                                        }
+                                        
                                     }
-                                    
                                 }
                             }
-                        }
-
-                        Spacer()
-
-                        HStack
-                        {
+                            
                             Spacer()
-
-                            Button
+                            
+                            HStack
                             {
-                                isShowingSheet.toggle()
+                                Spacer()
                                 
-                                appState.cachedDownloadsFolderSize = directorySize(url: AppConstants.brewCachedDownloadsPath)
-                            } label: {
-                                Text("Close")
+                                Button
+                                {
+                                    isShowingSheet.toggle()
+                                    
+                                    appState.cachedDownloadsFolderSize = directorySize(url: AppConstants.brewCachedDownloadsPath)
+                                } label: {
+                                    Text("Close")
+                                }
+                                .keyboardShortcut(.defaultAction)
+                                .padding(.top)
+                                
                             }
-                            .keyboardShortcut(.defaultAction)
-                            .padding(.top)
+                        }
+                        .fixedSize()
+                    }
+                    .padding()
+                    //.frame(minWidth: 300, minHeight: 150)
+                    .onAppear
+                    {
+                        Task
+                        {
+                            await synchronizeInstalledPackages(brewData: brewData)
                         }
                     }
-                    .fixedSize()
                 }
-                .padding()
-                //.frame(minWidth: 300, minHeight: 150)
-                .onAppear
-                {
-                    Task
-                    {
-                        await synchronizeInstalledPackages(brewData: brewData)
-                    }
-                }
+                
             }
         }
     }

@@ -132,7 +132,7 @@ struct AddTapView: View
                     }
                 }
             case .finished:
-                ComplexWithIcon(systemName: "checkmark.seal") {
+                ComplexWithIcon(systemName: "checkmark.circle") {
                     DisappearableSheet(isShowingSheet: $isShowingSheet)
                     {
                         HeadlineWithSubheadline(headline: "Successfully added \(requestedTap)", subheadline: "There were no errors", alignment: .leading)
@@ -150,14 +150,14 @@ struct AddTapView: View
                 }
 
             case .error:
-                ComplexWithIcon(systemName: "xmark.seal") {
+                ComplexWithIcon(systemName: "x.circle") {
                     VStack(alignment: .leading, spacing: 5)
                     {
                         switch tappingError {
                         case .repositoryNotFound:
-                                Text("\(requestedTap) doesn't exist")
+                                Text("\(requestedTap) was not found")
                                     .font(.headline)
-                                Text("Double-check that you wrote the name right")
+                                Text("Make sure the name is typed correctly")
                         
                         case .other:
                             Text("An error occured while tapping \(requestedTap)")
@@ -179,6 +179,7 @@ struct AddTapView: View
                             }
                             .keyboardShortcut(.defaultAction)
                         }
+                        .padding(.top)
                     }
                     .frame(width: 200)
                     .fixedSize(horizontal: false, vertical: true)

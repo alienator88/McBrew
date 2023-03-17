@@ -87,6 +87,7 @@ struct ContentView: View
                         }
                     }
                     .help("Upgrade homebrew app")
+                    .overlay(arrowDown, alignment: .topTrailing)
 
                     Spacer()
                     
@@ -102,6 +103,7 @@ struct ContentView: View
                         }
                     }
                     .help("Update installed homebrew packages")
+                    .overlay(arrowDown, alignment: .topTrailing)
 
                     Spacer()
 
@@ -194,3 +196,12 @@ struct ContentView: View
         })
     }
 }
+
+
+private var arrowDown: some View {
+        Image(systemName: "arrow.down")
+        .resizable()
+        .scaledToFit()
+        .frame(width: 10.0, height: 10.0)
+        .padding([.trailing], 2)
+    }

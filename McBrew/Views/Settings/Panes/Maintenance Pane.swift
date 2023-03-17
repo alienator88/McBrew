@@ -23,9 +23,18 @@ struct MaintenancePane: View
         {
             VStack(alignment: .leading, spacing: 10)
             {
-                Text("Set default steps")
-                    .font(.headline)
+//                Text("Default options when running maintenance")
+//                    .font(.headline)
                 MaintenanceReadyView(shouldUninstallOrphans: $default_shouldUninstallOrphans, shouldPurgeCache: $default_shouldPurgeCache, shouldDeleteDownloads: $default_shouldDeleteDownloads, shouldPerformHealthCheck: $default_shouldPerformHealthCheck, isShowingSheet: $isShowingSheetDummy, maintenanceSteps: $maintenanceStepsDummy, isShowingControlButtons: false, forcedOptions: false)
+                
+                HStack{
+                    Spacer()
+                    Text("􀅴 Default options when running maintenance")
+                        .font(.caption)
+                        .foregroundColor(Color(nsColor: NSColor.systemGray))
+                    Spacer()
+                }
+                
             }
         }
     }

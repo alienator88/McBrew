@@ -12,12 +12,12 @@ struct SearchResultRow: View
     @AppStorage("showDescriptionsInSearchResults") var showDescriptionsInSearchResults: Bool = false
     
     @EnvironmentObject var brewData: BrewDataStorage
-
+    
     @State var packageName: String
     @State var isCask: Bool
     
     @State private var description: String = ""
-
+    
     var body: some View
     {
         VStack(alignment: .leading)
@@ -48,12 +48,17 @@ struct SearchResultRow: View
                 {
                     Text(description)
                         .font(.caption)
+                        .foregroundColor(Color(nsColor: NSColor.systemGray))
+
                 }
                 else
                 {
-                    Text("Loading description...")
-                        .font(.caption)
-                        .foregroundColor(Color(nsColor: NSColor.systemGray))
+                    HStack{
+                        Text("Loading description...")
+                            .font(.caption)
+                            .foregroundColor(Color(nsColor: NSColor.systemGray))
+                    }
+                    
                 }
             }
             

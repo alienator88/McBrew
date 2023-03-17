@@ -44,6 +44,7 @@ struct AddFormulaView: View
                         { _ in
                             foundPackageSelection = Set<UUID>() // Clear all selected items when the user looks for a different package
                         }
+                        .padding(.bottom, 5)
 
                         HStack
                         {
@@ -99,14 +100,14 @@ struct AddFormulaView: View
 
                     List(selection: $foundPackageSelection)
                     {
-                        Section("Found Formulae")
+                        Section("Formulae")
                         {
                             ForEach(searchResultTracker.foundFormulae)
                             { formula in
                                 SearchResultRow(packageName: formula.name, isCask: formula.isCask)
                             }
                         }
-                        Section("Found Casks")
+                        Section("Casks")
                         {
                             ForEach(searchResultTracker.foundCasks)
                             { cask in
@@ -114,7 +115,7 @@ struct AddFormulaView: View
                             }
                         }
                     }
-                    .listStyle(.bordered(alternatesRowBackgrounds: true))
+                    .listStyle(.bordered(alternatesRowBackgrounds: false))
                     .frame(width: 300, height: 300)
 
                     HStack
@@ -236,7 +237,7 @@ struct AddFormulaView: View
             case .finished:
                 DisappearableSheet(isShowingSheet: $isShowingSheet)
                 {
-                    ComplexWithIcon(systemName: "checkmark.seal") {
+                    ComplexWithIcon(systemName: "checkmark.circle") {
                         HeadlineWithSubheadline(headline: "Packages successfuly installed", subheadline: "There were no errors", alignment: .leading)
                     }
                 }

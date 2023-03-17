@@ -30,51 +30,60 @@ struct MaintenanceReadyView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 10)
         {
-            Form
-            {
-                LabeledContent("Packages:")
-                {
-                    VStack(alignment: .leading)
+            //            Form
+            //            {
+            
+            VStack(alignment: .center) {
+                HStack{
+                    Text("Uninstall orphaned packages")
+                    Spacer()
+                    Toggle(isOn: $shouldUninstallOrphans)
                     {
-                        Toggle(isOn: $shouldUninstallOrphans)
-                        {
-                            Text("Uninstall orphaned packages")
-                        }
                     }
+                    .toggleStyle(.switch)
                 }
-
-                LabeledContent("Downloads:")
-                {
-                    VStack(alignment: .leading)
+                
+                
+                HStack{
+                    Text("Purge Homebrew cache")
+                    Spacer()
+                    Toggle(isOn: $shouldPurgeCache)
                     {
-                        Toggle(isOn: $shouldPurgeCache)
-                        {
-                            Text("Purge Homebrew cache")
-                        }
-                        Toggle(isOn: $shouldDeleteDownloads)
-                        {
-                            Text("Empty Download Cache")
-                        }
                     }
+                    .toggleStyle(.switch)
                 }
-
-                LabeledContent("Other:")
-                {
+                
+                
+                HStack{
+                    Text("Empty Download Cache")
+                    Spacer()
+                    Toggle(isOn: $shouldDeleteDownloads)
+                    {
+                    }
+                    .toggleStyle(.switch)
+                }
+                
+                
+                HStack{
+                    Text("Perform health check")
+                    Spacer()
                     Toggle(isOn: $shouldPerformHealthCheck)
                     {
-                        Text("Perform health check")
                     }
+                    .toggleStyle(.switch)
                 }
+                 
             }
-
+            
+            
             if isShowingControlButtons
             {
                 HStack
                 {
                     DismissSheetButton(isShowingSheet: $isShowingSheet)
-
+                    
                     Spacer()
-
+                    
                     Button
                     {
                         print("Start")
@@ -102,7 +111,7 @@ struct MaintenanceReadyView: View {
             
         }
     }
-
+    
     private var isStartDisabled: Bool {
         [shouldUninstallOrphans, shouldPurgeCache, shouldDeleteDownloads, shouldPerformHealthCheck].allSatisfy { !$0 }
     }
