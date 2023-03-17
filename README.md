@@ -21,16 +21,17 @@ Adding in features and redesigning the look to fit more of my needs. Also using 
 ## Screenshots
 
 ### Dashboard
-![Dark](https://user-images.githubusercontent.com/6263626/225772803-2160b615-0e5a-4f36-a0bf-2378b6690be1.png)
-![Screenshot 2023-03-16 at 5 22 31 PM](https://user-images.githubusercontent.com/6263626/225773927-5f75e352-a03e-4849-a221-3b976b1009cf.png)
+![Screenshot 2023-03-17 at 4 05 59 PM](https://user-images.githubusercontent.com/6263626/226061679-8193f2ba-9292-4675-bce7-c1a684287b3d.png)
+![Screenshot 2023-03-17 at 4 06 04 PM](https://user-images.githubusercontent.com/6263626/226061689-d0d87ef7-ac1f-49a3-a276-2a9da1810505.png)
 ### Packages
-![Screenshot 2023-03-14 at 1 09 22 PM](https://user-images.githubusercontent.com/6263626/225112684-4ee7f402-edb8-4de7-abbb-0a10f2863b57.png)
-![Screenshot 2023-03-14 at 1 09 49 PM](https://user-images.githubusercontent.com/6263626/225112735-ae912a79-475c-44c2-93d2-bb9b6d6aefab.png)
+![Screenshot 2023-03-17 at 4 06 25 PM](https://user-images.githubusercontent.com/6263626/226061698-9d49697c-41b4-4514-a6cf-050c79f1db67.png)
+![Screenshot 2023-03-17 at 4 06 54 PM](https://user-images.githubusercontent.com/6263626/226061713-938ab838-be8b-4bcd-b9fe-7e44e57a17a7.png)
 ### Maintenance
-![Screenshot 2023-03-14 at 1 09 37 PM](https://user-images.githubusercontent.com/6263626/225112712-32d34114-a665-4054-994a-1330dc58159d.png)
-![Screenshot 2023-03-14 at 1 11 12 PM](https://user-images.githubusercontent.com/6263626/225112874-f40aa849-6540-4403-a736-0c2061b4a497.png)
+![Screenshot 2023-03-17 at 4 07 02 PM](https://user-images.githubusercontent.com/6263626/226061720-7c452062-4245-4ac9-b88a-fa34bcea192a.png)
+![Screenshot 2023-03-17 at 4 07 17 PM](https://user-images.githubusercontent.com/6263626/226061738-238a5a72-4ace-4ed8-b86b-142e3f5d4bfe.png)
 ### Settings
-![Screenshot 2023-03-14 at 1 10 27 PM](https://user-images.githubusercontent.com/6263626/225112756-52fa227a-3cc5-4dd5-8b4e-f8347f0c38ff.png)
+![Screenshot 2023-03-17 at 4 07 32 PM](https://user-images.githubusercontent.com/6263626/226061749-db3a9a4c-f371-4302-9ca0-f7b59ac5684d.png)
+![Screenshot 2023-03-17 at 4 07 56 PM](https://user-images.githubusercontent.com/6263626/226061755-55968d3b-72a3-4d53-8a13-2e4771f9d873.png)
 ![Drop](https://user-images.githubusercontent.com/6263626/225772842-51344716-543d-4868-9ff5-456ec562b96f.png)
 
 
