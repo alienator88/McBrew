@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct SidebarFooter: View {
+    
+    @EnvironmentObject var appState: AppState
 
     @State private var isHovering = false
 
@@ -34,7 +36,11 @@ struct SidebarFooter: View {
                 .onHover { hovering in
                             isHovering = hovering
                         }
-
+//                Button(action: {
+//                    goHome(appState: appState)
+//                }, label: {
+//                    Image(systemName: "house")
+//                })
             }
             
 

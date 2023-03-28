@@ -73,9 +73,9 @@ struct StartDash: View
                         {
                             
                             let dashColumns : [GridItem] = [
-                                GridItem(.flexible(), spacing: 8),
-                                GridItem(.flexible(), spacing: 8),
-                                GridItem(.flexible(), spacing: 8)
+                                GridItem(.flexible(), spacing: 10),
+                                GridItem(.flexible(), spacing: 10),
+                                GridItem(.flexible(), spacing: 10)
                             ]
                             
                             LazyVGrid(columns: dashColumns) {
@@ -116,10 +116,9 @@ struct StartDash: View
                                         
                                         
                                     }
-                                   
-                                    
-                                    
+
                                 }
+                                .frame(width: 220, height: 160 )
                                 
 
                                 
@@ -160,6 +159,8 @@ struct StartDash: View
                                     }
 
                                 }
+                                .frame(width: 220, height: 160 )
+
                                 
 
                                 
@@ -200,6 +201,8 @@ struct StartDash: View
                                     }
                                     
                                 }
+                                .frame(width: 220, height: 160 )
+
                                 
                                 
                                 
@@ -264,7 +267,9 @@ struct StartDash: View
 
                                     
                                 }
-                                .padding(.top, 8)
+                                .padding(.top, 4)
+                                .frame(width: 220, height: 160 )
+
                                 
                                 
                                 
@@ -326,7 +331,9 @@ struct StartDash: View
                                     }
 
                                 }
-                                .padding(.top, 8)
+                                .padding(.top, 4)
+                                .frame(width: 220, height: 160 )
+
                                 
                                
                                 
@@ -412,7 +419,9 @@ struct StartDash: View
                                     }
 
                                 }
-                                .padding(.top, 8)
+                                .padding(.top, 4)
+                                .frame(width: 220, height: 160 )
+
                                 
                                 
                                 

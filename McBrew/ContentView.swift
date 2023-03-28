@@ -24,7 +24,7 @@ struct ContentView: View
     @State private var multiSelection = Set<UUID>()
 
     @State private var isShowingAlert: Bool = false
-
+    
     var body: some View
     {
         VStack
@@ -33,9 +33,8 @@ struct ContentView: View
             NavigationView
             {
                 SidebarView()
-
                 StartDash() // StartPage for old view
-                    .frame(minWidth: 600, minHeight: 500)
+                    .frame(minWidth: 710, minHeight: 500)
             }
             .navigationTitle("McBrew")
             .navigationSubtitle("\(brewData.installedFormulae.count) formulae, \(brewData.installedCasks.count) \(multipleCask), \(availableTaps.addedTaps.count) taps")

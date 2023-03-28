@@ -12,14 +12,14 @@ struct SidebarView: View
     @EnvironmentObject var brewData: BrewDataStorage
     @EnvironmentObject var appState: AppState
     @EnvironmentObject var availableTaps: AvailableTaps
-
+    
     @EnvironmentObject var selectedPackageInfo: SelectedPackageInfo
-
+    
     @State private var isShowingSearchField: Bool = false
     @State private var searchText: String = ""
     @State private var isHovering = false
     
-
+    
     var body: some View
     {
         List
@@ -53,12 +53,12 @@ struct SidebarView: View
                 else
                 {
                     Text("No formulae found")
-//                    ProgressView()
+                    //                    ProgressView()
                 }
             }
             .collapsible(true)
             .font(.system(size: 14))
-
+            
             Section("Casks (\(brewData.installedCasks.count))")
             {
                 if !appState.isLoadingCasks
@@ -88,13 +88,13 @@ struct SidebarView: View
                 else
                 {
                     Text("No casks found")
-//                    ProgressView()
+                    //                    ProgressView()
                 }
             }
             .collapsible(true)
             .font(.system(size: 14))
-
-
+            
+            
             if searchText.isEmpty
             {
                 Section("Taps (\(availableTaps.addedTaps.count))")
@@ -107,42 +107,42 @@ struct SidebarView: View
                                 Image(systemName: "spigot")
                                 Text(tap.name)
                             }
-                                .contextMenu
+                            .contextMenu
+                            {
+                                Button
                                 {
-                                    Button
+                                    Task(priority: .userInitiated)
                                     {
-                                        Task(priority: .userInitiated)
-                                        {
-                                            print("Would remove \(tap.name)")
-                                            try await removeTap(name: tap.name, availableTaps: availableTaps, appState: appState)
-                                        }
-                                    } label: {
-                                        Text("Remove \(tap.name)")
+                                        print("Would remove \(tap.name)")
+                                        try await removeTap(name: tap.name, availableTaps: availableTaps, appState: appState)
                                     }
-                                    .alert(isPresented: $appState.isShowingRemoveTapFailedAlert, content: {
-                                        Alert(title: Text("Couldn't remove \(tap.name)"), message: Text("Try again in a few minutes, or restart McBrew"), dismissButton: .default(Text("Close"), action: {
-                                            appState.isShowingRemoveTapFailedAlert = false
-                                        }))
-                                    })
+                                } label: {
+                                    Text("Remove \(tap.name)")
                                 }
+                                .alert(isPresented: $appState.isShowingRemoveTapFailedAlert, content: {
+                                    Alert(title: Text("Couldn't remove \(tap.name)"), message: Text("Try again in a few minutes, or restart McBrew"), dismissButton: .default(Text("Close"), action: {
+                                        appState.isShowingRemoveTapFailedAlert = false
+                                    }))
+                                })
+                            }
                         }
                     }
                     else
                     {
                         Text("No taps found")
-//                        ProgressView()
+                        //                        ProgressView()
                     }
                 }
                 .collapsible(true)
                 .font(.system(size: 14))
-
+                
             }
         }
         .listStyle(SidebarListStyle())
         .frame(minWidth: 250)
         .safeAreaInset(edge: .bottom, spacing: 0) {
-                    SidebarFooter()
-                }
+            SidebarFooter()
+        }
         .searchable(text: $searchText, placement: .automatic, prompt: Text("Search"))
         .sheet(isPresented: $appState.isShowingMaintenanceSheet)
         {
@@ -154,15 +154,20 @@ struct SidebarView: View
         }
         .toolbar {
             
-//            ToolbarItem {
-//                Text("McBrew")
-//            }
+            //            ToolbarItem {
+            //                Button(action: {
+            //                    goHome(appState: appState)
+            //                }, label: {
+            //                    Image(systemName: "house")
+            //                })
+            //            }
             
             ToolbarItem {
-                            Button(action: toggleSidebar, label: {
-                                Image(systemName: "sidebar.leading")
-                            })
-            }            
+                Button(action: toggleSidebar, label: {
+                    Image(systemName: "sidebar.leading")
+                })
+                
+            }
         }
     }
 }

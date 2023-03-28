@@ -30,4 +30,6 @@ class AppState: ObservableObject {
     @Published var cachedDownloadsFolderSize: Int64 = directorySize(url: AppConstants.brewCachedDownloadsPath)
     
     @Published var homebrewVersion: String = ""
+    
+    @Published var viewId: String = UUID().uuidString
 }

@@ -106,6 +106,7 @@
 		C72BEA6829C2343A00A23D3C /* runHealthCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72BEA6729C2343A00A23D3C /* runHealthCheck.swift */; };
 		C72BEA6A29C23B8A00A23D3C /* StartDash.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72BEA6929C23B8A00A23D3C /* StartDash.swift */; };
 		C72BEA6C29C268F200A23D3C /* getBrewVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72BEA6B29C268F200A23D3C /* getBrewVersion.swift */; };
+		C772457529C9124C008C3423 /* GoHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = C772457429C9124C008C3423 /* GoHome.swift */; };
 		C7AFAF0229C0253700F8AAE2 /* DropTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7AFAF0129C0253700F8AAE2 /* DropTarget.swift */; };
 		C7AFAF0629C0298800F8AAE2 /* DropFile Pane.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7AFAF0529C0298800F8AAE2 /* DropFile Pane.swift */; };
 /* End PBXBuildFile section */
@@ -210,6 +211,7 @@
 		C72BEA6729C2343A00A23D3C /* runHealthCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = runHealthCheck.swift; sourceTree = "<group>"; };
 		C72BEA6929C23B8A00A23D3C /* StartDash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartDash.swift; sourceTree = "<group>"; };
 		C72BEA6B29C268F200A23D3C /* getBrewVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = getBrewVersion.swift; sourceTree = "<group>"; };
+		C772457429C9124C008C3423 /* GoHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoHome.swift; sourceTree = "<group>"; };
 		C7AFAF0129C0253700F8AAE2 /* DropTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropTarget.swift; sourceTree = "<group>"; };
 		C7AFAF0529C0298800F8AAE2 /* DropFile Pane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DropFile Pane.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -424,6 +426,7 @@
 				639246E429A26BB4008149E2 /* REGEX Match.swift */,
 				633A861B29A525F0006EA952 /* Toggle Sidebar.swift */,
 				6342117B29AA55B700E2563B /* Convert Folder Size to Presentable Format.swift */,
+				C772457429C9124C008C3423 /* GoHome.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -762,6 +765,7 @@
 				635A50E929B7723C00164FBA /* Get Pin Status.swift in Sources */,
 				63D51F65299A992900203F3F /* Settings View.swift in Sources */,
 				634065822871B0BE001A2178 /* Get Contents of Folder.swift in Sources */,
+				C772457529C9124C008C3423 /* GoHome.swift in Sources */,
 				63D51F6E299AAFE500203F3F /* Maintenance View.swift in Sources */,
 				63A87465298FE7FC009F9533 /* Search for Package.swift in Sources */,
 				639246E529A26BB4008149E2 /* REGEX Match.swift in Sources */,

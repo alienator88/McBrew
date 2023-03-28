@@ -7,6 +7,11 @@
 
 import SwiftUI
 
+struct VisualEffect: NSViewRepresentable {
+  func makeNSView(context: Self.Context) -> NSView { return NSVisualEffectView() }
+  func updateNSView(_ nsView: NSView, context: Context) { }
+}
+
 @main
 struct McBrewApp: App
 {
@@ -19,12 +24,15 @@ struct McBrewApp: App
     @StateObject var updateProgressTracker = UpdateProgressTracker()
 
     @StateObject var selectedPackageInfo = SelectedPackageInfo()
+    
+    @State private var id = UUID().uuidString
 
     var body: some Scene
     {
         WindowGroup
         {
             ContentView()
+//                .id(appState.viewId)
                 .environmentObject(appState)
                 .environmentObject(brewData)
                 .environmentObject(availableTaps)
@@ -34,6 +42,7 @@ struct McBrewApp: App
                 {
                     NSWindow.allowsAutomaticWindowTabbing = false
                 }
+//                .background(VisualEffect().ignoresSafeArea())
 //                .fixedSize()
         }
 //        .windowResizability(.contentSize)
@@ -131,7 +140,6 @@ struct McBrewApp: App
         }
         .windowStyle(.automatic)
         .windowToolbarStyle(.automatic)
-        
 
         Settings
         {
