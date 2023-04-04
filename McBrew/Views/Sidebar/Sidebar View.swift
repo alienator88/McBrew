@@ -15,6 +15,7 @@ struct SidebarView: View
     
     @EnvironmentObject var selectedPackageInfo: SelectedPackageInfo
     
+    @State private var selection: UUID? = nil
     @State private var isShowingSearchField: Bool = false
     @State private var searchText: String = ""
     @State private var isHovering = false
@@ -30,7 +31,7 @@ struct SidebarView: View
                 {
                     ForEach(searchText.isEmpty ? brewData.installedFormulae : brewData.installedFormulae.filter { $0.name.contains(searchText) })
                     { formula in
-                        NavigationLink
+                        NavigationLink(tag: formula.id, selection: $selection)
                         {
                             PackageDetailView(package: formula, packageInfo: selectedPackageInfo)
                         } label: {
@@ -65,7 +66,7 @@ struct SidebarView: View
                 {
                     ForEach(searchText.isEmpty ? brewData.installedCasks : brewData.installedCasks.filter { $0.name.contains(searchText) })
                     { cask in
-                        NavigationLink
+                        NavigationLink(tag: cask.id, selection: $selection)
                         {
                             PackageDetailView(package: cask, packageInfo: selectedPackageInfo)
                         } label: {
@@ -154,20 +155,25 @@ struct SidebarView: View
         }
         .toolbar {
             
-            //            ToolbarItem {
-            //                Button(action: {
-            //                    goHome(appState: appState)
-            //                }, label: {
-            //                    Image(systemName: "house")
-            //                })
-            //            }
-            
             ToolbarItem {
                 Button(action: toggleSidebar, label: {
                     Image(systemName: "sidebar.leading")
                 })
-                
             }
+            
+            if selection != nil {
+                ToolbarItem {
+                    Button(action: {
+                        selection = nil
+                    }, label: {
+                        Image(systemName: "house")
+                    })
+                }
+            }
+            
+            
+            
+            
         }
     }
 }
