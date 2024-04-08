@@ -87,3 +87,13 @@ Much appreciation for the original, Cork, from https://github.com/buresdv
 McBrew is licensed under [Commons Clause](https://commonsclause.com).
 
 This means that McBrew open-source and you can do whatever you want with McBrew's source, like modifying it, contributing to it etc., but you can't sell McBrew or modified versions of it.
+
+## Some of my apps
+
+[Pearcleaner](https://github.com/alienator88/Pearcleaner) - An opensource app cleaner with privacy in mind
+
+[Sentinel](https://github.com/alienator88/Sentinel) - A GUI for controlling gatekeeper status on your mac
+
+[Viz](https://github.com/alienator88/Viz) - Utility for extracting text from images, videos, qr/barcodes
+
+[McBrew](https://github.com/alienator88/McBrew) - A GUI for managing your homebrew
