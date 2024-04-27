@@ -36,15 +36,6 @@ Adding in features and redesigning the look to fit more of my needs. Also using 
 
 
 
-
-## Getting McBrew
-
-Pre-compiled, always up-to-date versions are available from my releases page. (See compilation instructions below)
-
-You'll need to run this before opening the app as I don't have a paid developer account: 
-
-`sudo xattr -r -d com.apple.quarantine "PATH_TO_APP"`
-
 ## Compiling McBrew
 
 Compiling McBrew is simple, as it does not have many dependencies.
@@ -86,7 +77,7 @@ Much appreciation for the original, Cork, from https://github.com/buresdv
 
 McBrew is licensed under [Commons Clause](https://commonsclause.com).
 
-This means that McBrew open-source and you can do whatever you want with McBrew's source, like modifying it, contributing to it etc., but you can't sell McBrew or modified versions of it.
+This means that McBrew is open-source and you can do whatever you want with McBrew's source, like modifying it, contributing to it etc., but you can't sell McBrew or modified versions of it.
 
 ## Some of my apps
 
